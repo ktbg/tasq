@@ -61,6 +61,8 @@ To do list items are stored in an airtable api which returns data as follows:
 
 ## Component Hierarchy
 
+![Component Hierarchy](https://github.com/ktbg/tasq/blob/main/Images/Tasq_componentHierarchy.png)
+
 ### MVP/PostMVP
 
 #### MVP 
