@@ -17,9 +17,58 @@ To run this application you'll need to run ```npm i``` to install the dependenci
 
 To do list items are stored in an airtable api which returns data as follows:
 
+``` javascript
+{
+    "records": [
+        {
+            "id": "recoQBzXZKoJwYm0q",
+            "fields": {
+                "title": "Grocery List",
+                "item": [
+                    "rectxSikQZXMKwO7U",
+                    "recTzyfxETyHoVI0h",
+                    "recVbb64DR0Oo3gfi"
+                ],
+                "item (from item)": [
+                    "eggs",
+                    "coffee",
+                    "bacon"
+                ]
+            },
+            "createdTime": "2021-09-17T13:56:01.000Z"
+        },
+        {
+            "id": "recGdLzH1Rh6dE4bF",
+            "fields": {
+                "title": "To Do List",
+                "item": [
+                    "recUNBIAOIlTZLWau",
+                    "recXcfw6sN6tYNNpW",
+                    "recr61LnfTZd9LvvP",
+                    "recISPvg6aZP1Wmne"
+                ],
+                "item (from item)": [
+                    "grocery shopping",
+                    "vacuum",
+                    "clean bathroom",
+                    "do homework"
+                ]
+            },
+            "createdTime": "2021-09-17T13:56:01.000Z"
+        },
+        {
+            "id": "rec79LtYlrumSdzPk",
+            "fields": {},
+            "createdTime": "2021-09-17T13:56:01.000Z"
+        }
+    ],
+    "offset": "rec79LtYlrumSdzPk"
+}
+```
+
 ## Wireframes
 
-
+## Component Hierarchy
 
 ### MVP/PostMVP
 
@@ -33,8 +82,11 @@ To do list items are stored in an airtable api which returns data as follows:
 
 #### PostMVP  
 
-- Add modal window that highlights additional information such as medium, dimensions, credit line
-- Add ability for user to save works in local storage and view saved works
+- Edit list items
+- Delete full lists
+- Delete list items
+- Progress chart for completed list items
+- Toggle hide checked items
 
 ## Project Schedule
 
