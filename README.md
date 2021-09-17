@@ -82,23 +82,25 @@ To do list items are stored in an airtable api which returns data as follows:
 
 #### PostMVP  
 
-- Edit list items
 - Delete full lists
 - Delete list items
+- Mark list items as done
 - Progress chart for completed list items
+- Edit list items
 - Toggle hide checked items
 
 ## Project Schedule
 
 |  Day | Deliverable | Status
 |---|---| ---|
-|Aug 28-29| Prompt / Wireframes / Priority Matrix / Timeframes | Complete
-|Aug 30| Project Approval / Core Application Structure (HTML, CSS, etc) | Complete
-|Aug 31| Pseudocode / actual code  | Incomplete
-|Sept 1| actual code / CSS  | Incomplete
-|Sept 2| CSS / Initial Clickable Model  | Incomplete
-|Sept 3| Advanced CSS / Post MVP | Incomplete
-|Sept 4| Presentations | Incomplete
+|Sept 16| Wireframe creation and approval | Complete
+|Sept 17| Component hierarchy map and approval | Incomplete
+|Sept 17-19| README, file set up, deploy set up, endpoint testing  | Incomplete
+|Sept 20| README approval, MVP functional logic  | Incomplete
+|Sept 21| CSS | Incomplete
+|Sept 22| CSS / postMVP| Incomplete
+|Sept 23| CSS/ postMVP | Incomplete
+|Sept 24| Presentations | Incomplete
 
 ## Priority Matrix
 
@@ -108,19 +110,19 @@ To do list items are stored in an airtable api which returns data as follows:
 
 | Component | Priority | Estimated Time | Time Invested | Actual Time |
 | --- | :---: |  :---: | :---: | :---: |
-| Basic HTML structure | H | 1 hr| 20 min |  |
-| Initial CSS and creation of classes and ids | H | 3 hrs| 2.5 hrs |  |
-| Test API end points| H | 2 hrs| 1.5 hrs| |
-| App logic to render random works to page on load | H | 3 hrs| 3 hrs | |
-| App logic for keyword search | H | 4 hrs| 2 hrs |  |
-| App logic to render search results on the page | H | 4 hrs| 4 hrs |  |
-| Initial flexbox CSS | H | 4 hrs| 2.5 hrs |  |
-| Styling app body | H | 1 hrs| 20 min |  |
-| Styling result cards and media query | H | 3 hrs| 3 hrs |  |
-| Post MVP - App logic for modal window| M | 3 hr| 7 hrs |  |
-| Post MVP - styling modal window | M | 1 hr| 6 hrs |  |
-| Post MVP - app logic for local storage of favorites | L | 3 hrs|  |  |
-| Total |  | 32 hrs|  31.16 hrs|  |
+| Create react app and install dependencies | H | 1 hr|  |  |
+| Remove react boilerplate css and rough style app body | H | 1 hrs|  |  |
+| Test routes| H | 1 hrs| | |
+| Test API end point get request | H | 2 hrs|  | |
+| Test API end point post request | H | 3 hrs| |  |
+| App logic to return list titles to home page | H | 4 hrs|  |  |
+| App logic to return list items to list page | H | 4 hrs|  |  |
+| CSS styling for MVP mobile and desktop| H | 12 hrs|  |  |
+| Post MVP - App logic to delete full list and list items | H | 5 hr |  |  |
+| Post MVP - App logic to mark list items as done | H | 3 hrs|  |  |
+| Post MVP - Progress chart animation for completed list items | M | 3 hr|  |  |
+| Post MVP - App logic to edit list items | L | 5 hr|  |  |
+| Total |  | 44 hrs|  |  |
 
 ## SWOT Analysis
 
