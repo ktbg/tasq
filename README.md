@@ -103,8 +103,8 @@ To do list items are stored in an airtable api which returns data as follows:
 
 | Component | Priority | Estimated Time | Time Invested | Actual Time |
 | --- | :---: |  :---: | :---: | :---: |
-| Create react app and install dependencies | H | 1 hr|  |  |
-| Remove react boilerplate css and rough style app body | H | 1 hrs|  |  |
+| Create react app and install dependencies | H | 1 hr| 10 min |  |
+| Remove react boilerplate css and rough style app body | H | 1 hrs| 10 min |  |
 | Test routes| H | 1 hrs| | |
 | Test API end point get request | H | 2 hrs|  | |
 | Test API end point post request | H | 3 hrs| |  |
