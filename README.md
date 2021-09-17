@@ -95,7 +95,7 @@ To do list items are stored in an airtable api which returns data as follows:
 
 ## Priority Matrix
 
-![Priority Matrix]
+![Priority Matrix](https://github.com/ktbg/tasq/blob/main/Images/p2_priorityMatrix.png)
 
 ## Timeframes
 
