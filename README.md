@@ -4,15 +4,6 @@
 
 Tasq is a react based front end application allowing users to create and manage to do lists.
 
-## Dependencies
-
-To run this application you'll need to run ```npm i``` to install the dependencies, which are as follows:
-
-- react
-- axios
-- react-router-dom
-- tailwindcss
-
 ## API and Data Sample
 
 To do list items are stored in an airtable api which returns data as follows:
@@ -123,6 +114,13 @@ To do list items are stored in an airtable api which returns data as follows:
 | Post MVP - Progress chart animation for completed list items | M | 3 hr|  |  |
 | Post MVP - App logic to edit list items | L | 5 hr|  |  |
 | Total |  | 44 hrs|  |  |
+
+## Dependencies
+
+- [create-react-app](https://create-react-app.dev/) 
+- [react-router-dom](https://reactrouter.com/web/guides/quick-start)
+- [axios](https://www.npmjs.com/package/axios)
+- [tailwindcss](https://tailwindcss.com/docs/guides/create-react-app)
 
 ## SWOT Analysis
 
