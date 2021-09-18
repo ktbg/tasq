@@ -17,14 +17,8 @@ export const getListTitles = async () => {
   return res.data.records;
 }
 
+// ------------------- for ListDetails.jsx -------------------
 export const getListItems = async (id) => {
   const res = await axios.get(itemURL, config);
-  // console.log(res.data.records[2].fields.item);
-  // let itemArr = res.data.records.filter((item)=>{
-  //   return item.fields.item === `${id}`;
-  // });
-  // console.log(itemArr);
   return res.data.records;
-  // const items = res.data.records.filter(item =>item.fields.listTitles === `${id}`);
-  // return items;
 }

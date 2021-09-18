@@ -5,20 +5,25 @@ import { getListTitles } from '../services';
 
 export default function Home() {
   const [lists, setLists] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const getLists = async () => {
       try{
         setLists(await getListTitles());
+        setLoading(false);
       }catch(error){
         console.log(error);
       }
     }
     getLists();
     console.log(lists);
-  }, [])
+  }, [loading])
 
   // async function getItems(lists)
+  if(loading) {
+    return <div>Loading...</div>
+  }
 
   return (
     <div>

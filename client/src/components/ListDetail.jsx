@@ -15,28 +15,24 @@ export default function ListDetail() {
     const getItems = async () => {
       try{
         setItems(await getListItems(id));
-        console.log(items);
       }catch(error) {
         console.log(error);
       }
   } 
   getItems();
+  console.log(items);
 },[id]);
-
-function createList (items){
-  items.map((item) => {
-    return item.fields.listTitles === id;
-  })
-}
 
   return (
     <div>
       <h3>List Name</h3>
       <ul>
         {items.map((item) => {
-          return (
-            <li key={item.id}>{item.fields.item}</li>
-          )
+          if(item?.fields.listTitles[0] === `${id}`){
+            return (
+              <li key={item.id}>{item.fields.item}</li>
+            )
+          }
         })}
       </ul>
       <DeleteButton />
