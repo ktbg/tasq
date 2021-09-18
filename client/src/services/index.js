@@ -22,3 +22,11 @@ export const getListItems = async (id) => {
   const res = await axios.get(itemURL, config);
   return res.data.records;
 }
+
+// ------------------- for Create.jsx ------------------------
+export const createList = async (fields) => {
+  const res = await axios.post(titleURL, {fields}, config);
+  console.log("new list Title created");
+  console.log(res.data);
+  return(res.data);
+}
