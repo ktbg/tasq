@@ -9,8 +9,9 @@ export default function Form(props) {
     listItem,
     setListItem,
     handleTitleSubmit,
+    handleItemSubmit,
     titleId,
-    setTitleId,
+    toggle,
     type,
   } = props;
 
@@ -24,16 +25,20 @@ export default function Form(props) {
           onChange={(e) => setName(e.target.value)}
         />  
       </form>
-      {/* <form onSubmit={handleItemSubmit}> */}
-      <form>
+      
+      {!toggle ? <div></div> : 
+      // <form>
+      <form onSubmit={handleItemSubmit}> 
         <label>List Item</label>
         <input  
           type="text"
           value={listItem}
           onChange={(e) => setListItem(e.target.value)}
         />
+        <div>{titleId}</div>
         <button>{type}</button>
       </form>
+      }
     </>  
   )
 }

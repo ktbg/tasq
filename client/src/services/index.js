@@ -28,5 +28,11 @@ export const createList = async (fields) => {
   const res = await axios.post(titleURL, {fields}, config);
   console.log("new list Title created");
   console.log(res.data);
-  return(res.data);
+  return(res.data.id);
+}
+
+export const addListItem = async (fields) => {
+  const res = await axios.post(itemURL, {fields}, config);
+  console.log("new list item created");
+  console.log(res.data);
 }
