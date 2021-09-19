@@ -108,10 +108,11 @@ To do list items are stored in an airtable api which returns data as follows:
 | Test routes| H | 1 hrs| 30 min | |
 | Test API end point get request | H | 2 hrs| 1 hr | |
 | Test API end point post request | H | 3 hrs| |  |
-| App logic to return list titles to home page | H | 4 hrs| 1 hr |  |
+| App logic to return list titles to home page | H | 2 hrs| 1 hr |  |
 | App logic to return list items to list page | H | 4 hrs| 3 hrs |  |
+| App logic to create new list | H | 4 hrs| |  |
 | CSS styling for MVP mobile and desktop| H | 12 hrs|  |  |
-| Post MVP - App logic to delete full list and list items | H | 5 hr |  |  |
+| Post MVP - App logic to delete full list and list items | H | 3 hr |  |  |
 | Post MVP - App logic to mark list items as done | H | 3 hrs|  |  |
 | Post MVP - Progress chart animation for completed list items | M | 3 hr|  |  |
 | Post MVP - App logic to edit list items | L | 5 hr|  |  |
