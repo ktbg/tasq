@@ -28,7 +28,7 @@ export default function Home() {
   return (
     <div>
       {lists.map((list)=> (
-        <Link to={`/list/${list.id}`} target="_blank" rel="noopener noreferrer">
+        <Link to={`/list/${list.id}`}>
           <div key={list.id}>
             <h3>{list.fields.name}</h3>
             {/* add onClick that grabs id of list name as prop to list detail */}

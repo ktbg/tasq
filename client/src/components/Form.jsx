@@ -1,4 +1,5 @@
-import React from 'react'
+import FormInput from "./FormInput";
+import { useEffect } from "react";
 
 // current iteration of the form for post request only, put is postMVP
 export default function Form(props) {
@@ -12,6 +13,7 @@ export default function Form(props) {
     handleItemSubmit,
     titleId,
     toggle,
+    inputs,
     type,
   } = props;
 
@@ -29,13 +31,14 @@ export default function Form(props) {
       {!toggle ? <div></div> : 
       // <form>
       <form onSubmit={handleItemSubmit}> 
-        <label>List Item</label>
-        <input  
-          type="text"
-          value={listItem}
-          onChange={(e) => setListItem(e.target.value)}
-        />
-        <div>{titleId}</div>
+        {inputs.map((input) => {
+          return(
+            <>
+              <FormInput listItem={listItem} setListItem={setListItem}/>
+              <div>{titleId}</div> 
+            </>  
+          )  
+        })}
         <button>{type}</button>
       </form>
       }
