@@ -26,7 +26,7 @@ export default function Home() {
   }
 
   return (
-    <div>
+    <div className="border-2 border-red-500">
       {lists.map((list)=> (
         <Link to={`/list/${list.id}/${list.fields.name}`} >
           <div key={list.id}>
