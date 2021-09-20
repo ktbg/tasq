@@ -1,17 +1,18 @@
 import DeleteButton from "./DeleteButton"
 import { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { getListItems } from "../services";
 
 // pass id of list title as the prop
 export default function ListDetail() {
   const [items, setItems] = useState([]);
-  const { id } = useParams();
+  const { id, title } = useParams();
   const [loading, setLoading] = useState(true);
 
   useEffect(()=> {
     const getItems = async () => {
       try{
+        console.log("getItems called");
         // set axios to variable
         const viewListItems = await getListItems();
         // filter to get results and setItems
@@ -23,7 +24,7 @@ export default function ListDetail() {
       }
   } 
   getItems();
-},[]);
+},[id]);
 
 if(loading) {
   return <div>Loading...</div>
@@ -31,13 +32,14 @@ if(loading) {
 
   return (
     <div>
-      <h3>List Name</h3>
+      <h3>{title}</h3>
       <ul>
         {items.map ((item) => 
-          (<li key={item?.id}>{item?.fields.item}</li>)
+          (<li key={item?.id}>{item?.fields.item} - {item.id}</li>)
         )}
       </ul>
-      <DeleteButton />
+      <DeleteButton items={items} id={id}/>
+      <Link to={`/list/${id}/${title}/edit`}>edit list</Link>
     </div>
   )
 }

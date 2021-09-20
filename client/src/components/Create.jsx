@@ -8,7 +8,7 @@ export default function Create() {
   const [listItem, setListItem] = useState([]);
   const [titleId, setTitleId] = useState("");
   const [toggle, setToggle] = useState(false);
-  const [inputs, setInputs] = useState(0);
+  // const [inputs, setInputs] = useState(0);
 
 //  on list name submit, post that to listTitle end point and return the id#
   const handleTitleSubmit = async (e) => {
@@ -39,10 +39,10 @@ export default function Create() {
     }
   }
 // post list items and id# to listItems end point
-const handleListSave = async (e) => {
-  e.preventDefault();
+// const handleListSave = async (e) => {
+//   e.preventDefault();
 
-}
+// }
 
   return (
     <div>
@@ -55,7 +55,7 @@ const handleListSave = async (e) => {
         handleTitleSubmit={handleTitleSubmit}
         titleId={titleId}
         toggle={toggle}
-        inputs={inputs}
+        // inputs={inputs}
         handleItemSubmit={handleItemSubmit}
       />
     </div>

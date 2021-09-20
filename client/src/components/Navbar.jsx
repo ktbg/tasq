@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 
 export default function Navbar() {
   return (
@@ -6,7 +6,7 @@ export default function Navbar() {
       <Link to="/" ><h1>TASQ</h1></Link>
       <ul>
         <Link to="/"><li>Home</li></Link>
-        <Link to="/new"><li>Create</li></Link>
+        <NavLink to="/new" activeStyle={{display:"none"}}><li>Create</li></NavLink>
       </ul>
     </div>
   )

@@ -34,6 +34,17 @@ export const createList = async (fields) => {
 
 export const addListItem = async (fields) => {
   const res = await axios.post(itemURL, {fields}, config);
-  console.log("new list item created");
   console.log(res.data);
+}
+
+// ------------------- for DeleteButton.jsx -----------------
+export const deleteList = async(id) => {
+  const res = await axios.delete(`${titleURL}/${id}`, config);
+  return res.data;
+}
+
+// delete items from listItems table
+export const deleteItem = async(id) => {
+  const res = await axios.delete(`${itemURL}/${id}`, config);
+  return res.data;
 }

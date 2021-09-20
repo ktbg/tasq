@@ -3,6 +3,7 @@ import Navbar from './components/Navbar';
 import Home from './components/Home';
 import ListDetail from './components/ListDetail';
 import Create from './components/Create';
+import Edit from './components/Edit';
 import './App.css';
 
 
@@ -13,11 +14,14 @@ function App() {
      <Route exact path="/">
        <Home />
      </Route>
-     <Route path="/list/:id">
+     <Route exact path="/list/:id/:title">
        <ListDetail />
      </Route>
      <Route exact path="/new">
        <Create />
+     </Route>
+     <Route path="/list/:id/:title/edit">
+       <Edit />
      </Route>
     </div>
   );

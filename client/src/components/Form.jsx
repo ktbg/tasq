@@ -1,5 +1,5 @@
 import FormInput from "./FormInput";
-import { useEffect } from "react";
+// import { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 // current iteration of the form for post request only, put is postMVP
@@ -14,8 +14,8 @@ export default function Form(props) {
     handleItemSubmit,
     titleId,
     toggle,
-    inputs,
-    type,
+    // inputs,
+    // type,
   } = props;
 
   return (
@@ -27,7 +27,7 @@ export default function Form(props) {
           value={name}
           onChange={(e) => setName(e.target.value)}
         /> 
-        <button>+</button> 
+        {!toggle ? <button>+</button> : null}
       </form>
       
       {!toggle ? <div></div> : 
@@ -36,8 +36,9 @@ export default function Form(props) {
         <FormInput listItem={listItem} setListItem={setListItem}/> 
       </form>
       }
-      <Link to={`./link/${titleId}`}>
-       <button>save list</button>
+      <Link to={`/list/${titleId}/${name}`}>
+        {/* {console.log(`${titleId} ${name}`)} */}
+       save list
       </Link>
     </>  
   )
