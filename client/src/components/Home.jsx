@@ -17,7 +17,7 @@ export default function Home() {
       }
     }
     getLists();
-    console.log(lists);
+    // console.log(lists);
   }, [loading])
 
   // async function getItems(lists)

@@ -27,14 +27,15 @@ export const getListItems = async () => {
 // ------------------- for Create.jsx ------------------------
 export const createList = async (fields) => {
   const res = await axios.post(titleURL, {fields}, config);
-  console.log("new list Title created");
-  console.log(res.data);
+  // console.log("new list Title created");
+  // console.log(res.data);
   return(res.data.id);
 }
 
 export const addListItem = async (fields) => {
   const res = await axios.post(itemURL, {fields}, config);
-  console.log(res.data);
+  // console.log(res.data);
+  return res.data;
 }
 
 // ------------------- for DeleteButton.jsx -----------------
@@ -48,3 +49,5 @@ export const deleteItem = async(id) => {
   const res = await axios.delete(`${itemURL}/${id}`, config);
   return res.data;
 }
+
+// ------------------ for Edit.jsx -------------------------

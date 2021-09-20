@@ -8,6 +8,7 @@ export default function Create() {
   const [listItem, setListItem] = useState([]);
   const [titleId, setTitleId] = useState("");
   const [toggle, setToggle] = useState(false);
+  const [title, setTitle] = useState("");
   // const [inputs, setInputs] = useState(0);
 
 //  on list name submit, post that to listTitle end point and return the id#
@@ -16,6 +17,7 @@ export default function Create() {
     const fields = { name };
     try {
       setTitleId(await createList(fields));
+      setTitle(name);
       setName("");
       setToggle(true);
     } catch(error){
@@ -55,7 +57,7 @@ export default function Create() {
         handleTitleSubmit={handleTitleSubmit}
         titleId={titleId}
         toggle={toggle}
-        // inputs={inputs}
+        title={title}
         handleItemSubmit={handleItemSubmit}
       />
     </div>

@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 
 // current iteration of the form for post request only, put is postMVP
 export default function Form(props) {
+  // const [title, setTitle] = useState("");
 
   const {
     name,
@@ -14,8 +15,7 @@ export default function Form(props) {
     handleItemSubmit,
     titleId,
     toggle,
-    // inputs,
-    // type,
+    title,
   } = props;
 
   return (
@@ -31,13 +31,11 @@ export default function Form(props) {
       </form>
       
       {!toggle ? <div></div> : 
-      // <form>
       <form onSubmit={handleItemSubmit}> 
         <FormInput listItem={listItem} setListItem={setListItem}/> 
       </form>
       }
-      <Link to={`/list/${titleId}/${name}`}>
-        {/* {console.log(`${titleId} ${name}`)} */}
+      <Link to={`/list/${titleId}/${title}`}>
        save list
       </Link>
     </>  
