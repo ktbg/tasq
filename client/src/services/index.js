@@ -20,7 +20,7 @@ export const getListTitles = async () => {
 // ------------------- for ListDetails.jsx -------------------
 export const getListItems = async () => {
   const res = await axios.get(itemURL, config);
-  console.log(res.data.records);
+  // console.log(res.data.records);
   return res.data.records;
 }
 

@@ -7,13 +7,17 @@ import { getListItems } from "../services";
 export default function ListDetail() {
   const [items, setItems] = useState([]);
   const { id } = useParams();
-  // const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
 
   useEffect(()=> {
     const getItems = async () => {
       try{
-        setItems(await getListItems());
-        // setLoading(false);
+        // set axios to variable
+        const viewListItems = await getListItems();
+        const filterView = viewListItems.filter((item) => item.fields.listTitles[0] === `${id}`);
+        setItems(filterView);
+        // filter to get results and setItems
+        setLoading(false);
       }catch(error) {
         console.log(error);
       }
@@ -21,22 +25,17 @@ export default function ListDetail() {
   getItems();
 },[]);
 
-// if(loading) {
-//   return <div>Loading...</div>
-// }
+if(loading) {
+  return <div>Loading...</div>
+}
 
   return (
     <div>
       <h3>List Name</h3>
       <ul>
-        {items.map((item) => {
-          console.log(item.fields.listTitles[0]);
-          if(item?.fields.listTitles[0] === `${id}`){
-            return (
-              <li key={item?.id}>{item?.fields.item}</li>
-            )
-          }
-        })}
+        {items.map ((item) => 
+          (<li key={item?.id}>{item?.fields.item}</li>)
+        )}
       </ul>
       <DeleteButton />
     </div>
