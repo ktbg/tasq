@@ -59,6 +59,10 @@ To do list items are stored in an airtable api which returns data as follows:
 
 ## Wireframes
 ![Wireframes](https://github.com/ktbg/tasq/blob/main/Images/Tasq.png)
+<<<<<<< HEAD
+=======
+
+>>>>>>> 086e30cbaf8ca9f44a91e3244b23864e04d057b4
 ## Component Hierarchy
 
 ![Component Hierarchy](https://github.com/ktbg/tasq/blob/main/Images/Tasq_componentHierarchy.png)
