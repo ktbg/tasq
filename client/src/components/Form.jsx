@@ -31,14 +31,14 @@ export default function Form(props) {
       {!toggle ? <div></div> : 
       // <form>
       <form onSubmit={handleItemSubmit}> 
-        {inputs.map((input) => {
-          return(
-            <>
+        {/* {inputs.map((input) => { */}
+          {/* return(
+            <> */}
               <FormInput listItem={listItem} setListItem={setListItem}/>
               <div>{titleId}</div> 
-            </>  
-          )  
-        })}
+            {/* </>  
+          )   */}
+        {/* })} */}
         <button>{type}</button>
       </form>
       }

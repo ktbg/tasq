@@ -5,32 +5,35 @@ import { getListItems } from "../services";
 
 // pass id of list title as the prop
 export default function ListDetail() {
-  // for testing, id is for Grocery List
-  // const id = `recNTA3BwpU8YKHp5`;
   const [items, setItems] = useState([]);
-
   const { id } = useParams();
+  // const [loading, setLoading] = useState(true);
 
   useEffect(()=> {
     const getItems = async () => {
       try{
-        setItems(await getListItems(id));
+        setItems(await getListItems());
+        // setLoading(false);
       }catch(error) {
         console.log(error);
       }
   } 
   getItems();
-  console.log(items);
-},[id]);
+},[]);
+
+// if(loading) {
+//   return <div>Loading...</div>
+// }
 
   return (
     <div>
       <h3>List Name</h3>
       <ul>
         {items.map((item) => {
+          console.log(item.fields.listTitles[0]);
           if(item?.fields.listTitles[0] === `${id}`){
             return (
-              <li key={item.id}>{item.fields.item}</li>
+              <li key={item?.id}>{item?.fields.item}</li>
             )
           }
         })}
