@@ -25,7 +25,7 @@ export default function Create() {
 // attach the id# to each of the list items
   const handleItemSubmit = async (e) => {
     e.preventDefault();
-    setInputs(inputs + 1);
+    // setInputs(inputs + 1);
     // userList.push(e.target.value); ---- may not need this but keeping for now
     const fields = {
       listTitles: [`${titleId}`],
@@ -39,7 +39,10 @@ export default function Create() {
     }
   }
 // post list items and id# to listItems end point
+const handleListSave = async (e) => {
+  e.preventDefault();
 
+}
 
   return (
     <div>
@@ -54,7 +57,6 @@ export default function Create() {
         toggle={toggle}
         inputs={inputs}
         handleItemSubmit={handleItemSubmit}
-        type={"Create"}
       />
     </div>
   )

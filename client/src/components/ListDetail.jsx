@@ -14,9 +14,9 @@ export default function ListDetail() {
       try{
         // set axios to variable
         const viewListItems = await getListItems();
+        // filter to get results and setItems
         const filterView = viewListItems.filter((item) => item.fields.listTitles[0] === `${id}`);
         setItems(filterView);
-        // filter to get results and setItems
         setLoading(false);
       }catch(error) {
         console.log(error);

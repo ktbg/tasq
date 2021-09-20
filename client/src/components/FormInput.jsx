@@ -7,7 +7,8 @@ export default function FormInput(props) {
   
   return (
     <>
-      <label>List Item</label>
+      {/* <label>List Item</label> */}
+      {/* <button>+</button>  */}
         <input  
           type="text"
           value={listItem}
