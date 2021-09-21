@@ -1,6 +1,7 @@
 
 import { useHistory } from 'react-router';
 import { deleteList, deleteItem } from '../services';
+import TrashCan from './Delete/TrashCan';
 
 export default function DeleteButton(props) {
   const {items, id} = props;
@@ -11,7 +12,6 @@ export default function DeleteButton(props) {
     const urlEncode = items.map((item) => {
       return item.id;
     })
- 
     urlEncode.forEach(async(id) => {
       await deleteItem(id);
     });
@@ -20,6 +20,8 @@ export default function DeleteButton(props) {
   }
 
   return (
-    <button onClick={handleDelete}>Delete</button>
+    <button onClick={handleDelete}>
+      <TrashCan className={"ml-6"}/>
+    </button>
   )
 }

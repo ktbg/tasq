@@ -1,4 +1,5 @@
 import Form from './Form';
+import Navbar from "./Navbar";
 import { useState } from 'react';
 import { createList } from '../services';
 import { addListItem } from '../services'
@@ -48,7 +49,7 @@ export default function Create() {
 
   return (
     <div>
-      <h5>Create a new list</h5>
+      <Navbar />
       <Form 
         name={name}
         setName={setName}
