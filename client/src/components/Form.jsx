@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 
 import '../index.css';
 import { getListItems } from "../services";
+import { deleteItem } from "../services";
 
 // current iteration of the form for post request only, put is postMVP
 export default function Form(props) {
@@ -42,6 +43,12 @@ export default function Form(props) {
   getItems();
 },[listItem]);
 
+    const handleItemDelete = (e) => {
+      e.preventDefault();
+      console.log(`handle item delete clicked for ${e.target.id}`);
+      // await deleteItem(itemId);
+    }
+
   return (
     <div className="md:container mx-6 mt-8">
       <div className="flex">
@@ -66,19 +73,23 @@ export default function Form(props) {
 
           {/* map over list items to render them in fields */}
           {items.map((item) => (
-            <div className="flex">
+            <div key={item.id} className="flex justify-between">
               <FormInput 
                 listItem={item.fields?.item} 
                 setListItem={setListItem} 
                 placeholder={null}
                 autoFocus={false}
               /> 
-              <RedTrashCan itemId={item.id} className={"my-3 mx-auto"}/>
+              <RedTrashCan 
+                itemId={item.id} 
+                className={"my-3 mx-auto"}
+                handleItemDelete={handleItemDelete}
+              />
           </div>
           ))}
           
           {/* ---------------------- new list input ---------------------------------- */}
-          <div className="flex">
+          <div className="flex justify-between">
             <FormInput 
               listItem={listItem} 
               setListItem={setListItem} 

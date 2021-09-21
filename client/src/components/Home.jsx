@@ -2,11 +2,13 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { getListTitles } from '../services';
 import NavbarHome from './NavbarHome';
+import TotalListItems from './TotalListItems';
 
 
 export default function Home() {
   const [lists, setLists] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [listItems, setListItems] = useState([]);
 
   useEffect(() => {
     const getLists = async () => {
@@ -18,10 +20,8 @@ export default function Home() {
       }
     }
     getLists();
-    // console.log(lists);
   }, [loading])
 
-  // async function getItems(lists)
   if(loading) {
     return <div>Loading...</div>
   }
@@ -39,7 +39,7 @@ export default function Home() {
               <div className="bg-tasqGrey h-19 w-80 mb-4 rounded px-4 py-4 flex justify-between" key={list.id}>
                 <div>
                   <h3 className="font-medium text-left w-66 py-3.75">{list.fields.name}</h3>
-                  <p className="text-xs text-left pt-1">XX items</p>
+                  <TotalListItems id={list.id} className={"text-xs text-left pt-1"} />
                 </div>
                 <svg className="mt-2"width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M9 18.5L15 12.5L9 6.5" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
