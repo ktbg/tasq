@@ -4,6 +4,7 @@ module.exports = {
   theme: {
     colors: {
       darkPurple: '#9E8CD1',
+      tasqGrey: '#F8F7F7',
     },
     extend: {},
   },
