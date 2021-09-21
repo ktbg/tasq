@@ -31,7 +31,7 @@ if(loading) {
 }
 
   return (
-    <div>
+    <div className="mx-auto">
       <div className="mt-8">
         <h1 className="w-full text-left pl-6 font-medium text-2xl">{title}</h1>
         <p className="text-sm text-left text-gray-600 pt-1 pl-6">XX items</p>
@@ -55,8 +55,6 @@ if(loading) {
           <p className="inline-block pl-4">Add New List</p>
         </div>
       </Link> */}
-      <DeleteButton items={items} id={id}/>
-      <Link to={`/list/${id}/${title}/edit`}>edit list</Link>
     </div>
   )
 }

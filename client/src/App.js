@@ -10,11 +10,11 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-     <Navbar />
      <Route exact path="/">
        <Home />
      </Route>
      <Route exact path="/list/:id/:title">
+       <Navbar />
        <ListDetail />
      </Route>
      <Route exact path="/new">

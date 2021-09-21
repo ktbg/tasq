@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { getListTitles } from '../services';
+import NavbarHome from './NavbarHome';
 
 
 export default function Home() {
@@ -27,6 +28,7 @@ export default function Home() {
 
   return (
     <div>
+      <NavbarHome />
       <div className="mt-8">
         <h1 className="w-full text-left pl-6 font-medium text-2xl">My Lists</h1>
       </div>
