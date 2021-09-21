@@ -1,5 +1,5 @@
-import Form from './Form';
-import Navbar from "./Navbar";
+import Form from './Forms/Form';
+import Navbar from "./Nav/Navbar";
 import { useState } from 'react';
 import { createList } from '../services';
 import { addListItem } from '../services'

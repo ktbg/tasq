@@ -1,13 +1,13 @@
 import FormInput from "./FormInput";
-import RedTrashCan from "./Delete/RedTrashCan";
-import DeleteButton from "./DeleteButton";
+import RedTrashCan from "../Delete/RedTrashCan";
+import DeleteButton from "../Delete/DeleteButton";
 
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-import '../index.css';
-import { getListItems } from "../services";
-import { deleteItem } from "../services";
+import '../../index.css';
+import { getListItems } from "../../services";
+import { deleteItem } from "../../services";
 
 // current iteration of the form for post request only, put is postMVP
 export default function Form(props) {

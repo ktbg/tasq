@@ -1,4 +1,4 @@
-import Navbar from './Navbar';
+import Navbar from './Nav/Navbar';
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom';
 import { getListItems } from "../services";
@@ -31,7 +31,7 @@ if(loading) {
 
   return (
     <>
-      <Navbar items={items} id={id} />
+      <Navbar items={items} id={id} type={"detail"}/>
       <div className="mx-auto">
         <div className="mt-8">
           <h1 className="w-full text-left pl-6 font-medium text-2xl">{title}</h1>

@@ -1,7 +1,7 @@
 
 import { useHistory } from 'react-router';
-import { deleteList, deleteItem } from '../services';
-import TrashCan from './Delete/TrashCan';
+import { deleteList, deleteItem } from '../../services';
+import TrashCan from './TrashCan';
 
 export default function DeleteButton(props) {
   const {items, id, type, className} = props;

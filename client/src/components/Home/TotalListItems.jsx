@@ -1,5 +1,5 @@
-import '../index.css';
-import { getListItems } from '../services';
+import '../../index.css';
+import { getListItems } from '../../services';
 import { useState, useEffect } from 'react';
 
 export default function TotalListItems(props) {
