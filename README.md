@@ -58,12 +58,14 @@ To do list items are stored in an airtable api which returns data as follows:
 ```
 
 ## Wireframes
-![Home Mobile](https://github.com/ktbg/tasq/blob/main/Images/home_mobile.png) ![List Details Mobile](https://github.com/ktbg/tasq/blob/main/Images/assets/listDetail_mobile.png) ![New List](https://github.com/ktbg/tasq/blob/main/Images/listEdit_mobile.png)
+![Home Mobile](https://github.com/ktbg/tasq/blob/main/Images/home_mobile.png) 
+![List Details Mobile](https://github.com/ktbg/tasq/blob/main/Images/assets/listDetail_mobile.png) 
+![New List](https://github.com/ktbg/tasq/blob/main/Images/listEdit_mobile.png)
+![Home Desktop](https://github.com/ktbg/tasq/blob/main/Images/home_desktop.png)
+![List Details Desktop](https://github.com/ktbg/tasq/blob/main/Images/listDetails_desktop.png)
+![New List Desktop](https://github.com/ktbg/tasq/blob/main/Images/listEdit_desktop.png)
 
-<<<<<<< HEAD
-=======
 
->>>>>>> 086e30cbaf8ca9f44a91e3244b23864e04d057b4
 ## Component Hierarchy
 
 ![Component Hierarchy](https://github.com/ktbg/tasq/blob/main/Images/Tasq_componentHierarchy.png)
