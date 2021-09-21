@@ -58,7 +58,8 @@ To do list items are stored in an airtable api which returns data as follows:
 ```
 
 ## Wireframes
-![Wireframes](https://github.com/ktbg/tasq/blob/main/Images/Tasq.png)
+![Home Mobile](https://github.com/ktbg/tasq/blob/main/Images/home_mobile.png) ![List Details Mobile](https://github.com/ktbg/tasq/blob/main/Images/assets/listDetail_mobile.png) ![New List](https://github.com/ktbg/tasq/blob/main/Images/listEdit_mobile.png)
+
 <<<<<<< HEAD
 =======
 
