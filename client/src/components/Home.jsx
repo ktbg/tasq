@@ -26,7 +26,7 @@ export default function Home() {
   }
 
   return (
-    <div className="">
+    <div>
       <div className="mt-8">
         <h1 className="w-full text-left pl-6 font-medium text-2xl">My Lists</h1>
       </div>
@@ -36,9 +36,9 @@ export default function Home() {
             <div className="bg-tasqGrey h-19 w-80 mb-4 rounded px-4 py-4 flex justify-between" key={list.id}>
               <div>
                 <h3 className="font-medium text-left w-66 py-3.75">{list.fields.name}</h3>
-                <p className="text-xs text-left">XX items</p>
+                <p className="text-xs text-left pt-1">XX items</p>
               </div>
-              <svg className="mt-1"width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <svg className="mt-2"width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M9 18.5L15 12.5L9 6.5" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
             </div>

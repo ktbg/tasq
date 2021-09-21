@@ -8,5 +8,7 @@ body {
   background-color: white;
   font-family: 'Poppins', sans-serif;
   font-weight: 200;
+  --tw-text-opacity: 1;
+  color: rgba(17, 24, 39, var(--tw-text-opacity)); 
 }
 
