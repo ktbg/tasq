@@ -10,6 +10,7 @@ export default function Create() {
   const [titleId, setTitleId] = useState("");
   const [toggle, setToggle] = useState(false);
   const [title, setTitle] = useState("");
+  const [isDisabled, setIsDisabled] = useState(false);
   // const [inputs, setInputs] = useState(0);
 
 //  on list name submit, post that to listTitle end point and return the id#
@@ -19,7 +20,7 @@ export default function Create() {
     try {
       setTitleId(await createList(fields));
       setTitle(name);
-      setName("");
+      setIsDisabled(true);
       setToggle(true);
     } catch(error){
       console.log(error);
@@ -37,6 +38,7 @@ export default function Create() {
     try{
       await addListItem(fields);
       setListItem("");
+      // add new list item
     }catch(error){
       console.log(error);
     }
@@ -59,6 +61,7 @@ export default function Create() {
         titleId={titleId}
         toggle={toggle}
         title={title}
+        isDisabled={isDisabled}
         handleItemSubmit={handleItemSubmit}
       />
     </div>

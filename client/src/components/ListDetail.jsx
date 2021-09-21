@@ -1,7 +1,6 @@
-import DeleteButton from "./DeleteButton"
 import Navbar from './Navbar';
 import { useState, useEffect } from 'react'
-import { useParams, Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { getListItems } from "../services";
 
 // pass id of list title as the prop
@@ -13,7 +12,6 @@ export default function ListDetail() {
   useEffect(()=> {
     const getItems = async () => {
       try{
-        console.log("getItems called");
         // set axios to variable
         const viewListItems = await getListItems();
         // filter to get results and setItems

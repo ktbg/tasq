@@ -4,11 +4,10 @@ import { deleteList, deleteItem } from '../services';
 import TrashCan from './Delete/TrashCan';
 
 export default function DeleteButton(props) {
-  const {items, id} = props;
+  const {items, id, type, className} = props;
   const history = useHistory();
 
   const handleDelete = async () => {
-    console.log("delete button clicked");
     const urlEncode = items.map((item) => {
       return item.id;
     })
@@ -20,8 +19,10 @@ export default function DeleteButton(props) {
   }
 
   return (
-    <button onClick={handleDelete}>
-      <TrashCan className={"ml-6"}/>
+    <button className={className} onClick={handleDelete}>
+      {type==="create" ? "Delete List" :
+        <TrashCan className={"ml-6"}/>
+      }
     </button>
   )
 }
