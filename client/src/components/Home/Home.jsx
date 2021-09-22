@@ -37,10 +37,10 @@ export default function Home() {
           {/* ------------------------------ lists ---------------------------------- */}
           {lists.map((list)=> (
             <Link to={`/list/${list.id}/${list.fields.name}`} key={list.id}>
-              <div className="bg-tasqGrey h-19 w-80 mb-4 rounded px-4 py-4 flex justify-between" key={list.id}>
+              <div className="bg-tasqGrey shadow h-19 w-80 mb-4 rounded px-4 py-4 flex justify-between" key={list.id}>
                 <div>
                   <h3 className="font-medium text-left w-66 py-3.75">{list.fields.name}</h3>
-                  <TotalListItems id={list.id} className={"text-xs text-left pt-1"} />
+                  <TotalListItems id={list.id} className={"text-xs text-left pt-1 font-light"} />
                 </div>
                 <svg className="mt-2"width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M9 18.5L15 12.5L9 6.5" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>

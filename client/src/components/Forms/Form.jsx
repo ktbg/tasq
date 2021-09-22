@@ -8,13 +8,13 @@ import { Link } from "react-router-dom";
 import '../../index.css';
 import { getListItems } from "../../services";
 import SaveButton from "./SaveButton";
-// import { deleteItem } from "../../services";
+import { deleteItem } from "../../services";
 
 // current iteration of the form for post request only, put is postMVP
 export default function Form(props) {
   // const [title, setTitle] = useState("");
   const [items, setItems] = useState([]);
-  // const [deleteItem, setDeleteItem] = useState("");
+  const [toggleDelete, setToggleDelete] = useState(false);
 
   const {
     name,
@@ -40,7 +40,7 @@ export default function Form(props) {
       }
   } 
   getItems();
-},[listItem, titleId]);
+},[listItem, titleId, toggleDelete]);
 
     // useEffect(()=> {
     //   // const handleItemDelete = () => {
@@ -51,6 +51,13 @@ export default function Form(props) {
     //   // await deleteItem(itemId);
     //   // }
     // },[deleteItem]);
+
+    const handleItemDelete = async (id) => {
+      console.log(`this is handle delete ${id}`);
+      await deleteItem(id);
+      setToggleDelete((prevState)=> !prevState);
+      // console.log(`deleted item ${id}`);
+    }
 
   return (
     <div className="w-94 mx-6 mt-8">
@@ -86,7 +93,7 @@ export default function Form(props) {
               <RedTrashCan 
                 itemId={item.id} 
                 className={"my-3 mx-auto"}
-                // setDeleteItem={setDeleteItem}
+                handleItemDelete={handleItemDelete}
               />
           </div>
           ))}

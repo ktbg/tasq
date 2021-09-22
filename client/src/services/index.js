@@ -47,6 +47,7 @@ export const deleteList = async(id) => {
 // delete items from listItems table
 export const deleteItem = async(id) => {
   const res = await axios.delete(`${itemURL}/${id}`, config);
+  console.log(`inside index.js ${res.data}`)
   return res.data;
 }
 
