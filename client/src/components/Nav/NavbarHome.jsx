@@ -22,7 +22,7 @@ export default function Navbar() {
                     <CreateButton />
                   </NavLink>
                 ) : (
-                  <NavLink to="/">
+                  <NavLink to="/new">
                     <CreatePlus />
                   </NavLink>
                 )
