@@ -1,6 +1,6 @@
 import Navbar from './Nav/Navbar';
 import { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { getListItems } from "../services";
 
 // pass id of list title as the prop
@@ -31,9 +31,13 @@ if(loading) {
 
   return (
     <>
-      <Navbar items={items} id={id} type={"detail"}/>
+      <Navbar 
+        items={items} 
+        id={id} type={"detail"} 
+        name={"Lists"} 
+      />
       <div className="w-375 mx-auto">
-        <div className="mt-8">
+        <div className="mt-8 pl-1">
           <h1 className="w-full text-left pl-6 font-medium text-2xl">{title}</h1>
           <p className="text-sm text-left text-gray-600 pt-1 pl-6">{items.length} items</p>
         </div>
@@ -50,12 +54,12 @@ if(loading) {
           })}
         </ul>
         {/* add new task to list when edit functionality is there */}
-        {/* <Link to="/new">
-          <div className="text-darkPurple text-left w-80 h-10 rounded">
-            <p className="inline-block pl-4 text-lg font-medium">+</p>
+        <Link to="/new">
+          <div className="text-darkPurple font-medium pl-6 mt-6 text-left w-80 h-10 rounded">
+            <p className="inline-block pl-4 text-lg">+</p>
             <p className="inline-block pl-4">Add New List</p>
           </div>
-        </Link> */}
+        </Link>
       </div>
     </>
   )

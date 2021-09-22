@@ -51,7 +51,7 @@ export default function Create() {
 
   return (
     <div>
-      <Navbar />
+      <Navbar name={"Cancel"} className={"text-darkPurple text-sm"}/>
       <div className="w-375 mx-auto"> 
         <Form 
           name={name}
