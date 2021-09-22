@@ -60,7 +60,7 @@ To do list items are stored in an airtable api which returns data as follows:
 ## Wireframes
 ![Home Mobile](https://github.com/ktbg/tasq/blob/main/Images/home_mobile.png) 
 ![List Details Mobile](https://github.com/ktbg/tasq/blob/main/Images/listDetail_mobile.png) 
-![New List](https://github.com/ktbg/tasq/blob/main/Images/listEdit_mobile.png)
+![New List Mobile](https://github.com/ktbg/tasq/blob/main/Images/listEdit_mobile.png)
 ![Home Desktop](https://github.com/ktbg/tasq/blob/main/Images/home_desktop.png)
 ![List Details Desktop](https://github.com/ktbg/tasq/blob/main/Images/listDetails_desktop.png)
 ![New List Desktop](https://github.com/ktbg/tasq/blob/main/Images/listEdit_desktop.png)
@@ -118,8 +118,8 @@ To do list items are stored in an airtable api which returns data as follows:
 | App logic to return list titles to home page | H | 2 hrs| 1 hr |  |
 | App logic to return list items to list page | H | 4 hrs| 3 hrs |  |
 | App logic to create new list | H | 4 hrs| 4 hrs |  |
-| CSS styling for MVP mobile and desktop| H | 12 hrs| 4 hrs |  |
-| Post MVP - App logic to delete full list and list items | H | 3 hrs | 2 hrs |  |
+| CSS styling for MVP mobile and desktop| H | 12 hrs| 10 hrs |  |
+| Post MVP - App logic to delete full list and list items | H | 3 hrs | 4 hrs |  |
 | Post MVP - App logic to mark list items as done | H | 3 hrs|  |  |
 | Post MVP - Progress chart animation for completed list items | M | 3 hr|  |  |
 | Post MVP - App logic to edit list items | L | 5 hr|  |  |
@@ -132,6 +132,7 @@ To do list items are stored in an airtable api which returns data as follows:
 - [axios](https://www.npmjs.com/package/axios)
 - [tailwindcss](https://tailwindcss.com/docs/guides/create-react-app)
 - [CanvasJS](https://canvasjs.com/docs/charts/integration/react/)
+- [react-media](https://github.com/ReactTraining/react-media)
 
 ## SWOT Analysis
 
