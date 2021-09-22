@@ -40,7 +40,7 @@ if(loading) {
         <ul className="ml-6 mt-8">
           {items.map ((item) => {
             return (
-              <div className="bg-tasqGrey h-auto w-80 mb-2 rounded px-4 py-4 flex">
+              <div key={item.id} className="bg-tasqGrey h-auto w-80 mb-2 rounded px-4 py-4 flex">
                 <div className="my-auto">
                   <input type="checkbox" className="w-6 h-6 checked:bg-gray-600 checked:border-transparent"/>
                 </div>

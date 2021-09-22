@@ -7,12 +7,13 @@ import { Link } from "react-router-dom";
 
 import '../../index.css';
 import { getListItems } from "../../services";
-import { deleteItem } from "../../services";
+// import { deleteItem } from "../../services";
 
 // current iteration of the form for post request only, put is postMVP
 export default function Form(props) {
   // const [title, setTitle] = useState("");
   const [items, setItems] = useState([]);
+  // const [deleteItem, setDeleteItem] = useState("");
 
   const {
     name,
@@ -30,27 +31,28 @@ export default function Form(props) {
   useEffect(()=> {
     const getItems = async () => {
       try{
-        // set axios to variable
-        const viewListItems = await getListItems();
-        // filter to get results and setItems
-        const filterView = viewListItems.filter((item) => item.fields.listTitles[0] === `${titleId}`);
+        const viewListItems = await getListItems(); // set axios to variable
+        const filterView = viewListItems.filter((item) => item.fields.listTitles[0] === `${titleId}`);  // filter to get results and setItems
         setItems(filterView);
-        // setLoading(false);
       }catch(error) {
         console.log(error);
       }
   } 
   getItems();
-},[listItem]);
+},[listItem, titleId]);
 
-    const handleItemDelete = (e) => {
-      e.preventDefault();
-      console.log(`handle item delete clicked for ${e.target.id}`);
-      // await deleteItem(itemId);
-    }
+    // useEffect(()=> {
+    //   // const handleItemDelete = () => {
+    //     console.log(`item delete is ${deleteItem}`);
+    //   console.log(`onMouseUpCapture ${deleteItem}`);
+    //   setDeleteItem("");
+    //   console.log(`deleteItem is now ${deleteItem}`);
+    //   // await deleteItem(itemId);
+    //   // }
+    // },[deleteItem]);
 
   return (
-    <div className="md:container mx-6 mt-8">
+    <div className="w-94 mx-6 mt-8">
       <div className="flex">
         <form onSubmit={handleTitleSubmit}>
           <label className="text-gray-400 uppercase text-xs block text-left mb-1">List Name</label>
@@ -83,7 +85,7 @@ export default function Form(props) {
               <RedTrashCan 
                 itemId={item.id} 
                 className={"my-3 mx-auto"}
-                handleItemDelete={handleItemDelete}
+                // setDeleteItem={setDeleteItem}
               />
           </div>
           ))}
@@ -98,7 +100,7 @@ export default function Form(props) {
             /> 
             <RedTrashCan className={"my-3 mx-auto"}/>
           </div>
-          <button className="mt-6 text-darkPurple font-light">+ Add New Item</button>
+          <button className="mt-6 text-darkPurple font-light justify-start">+ Add New Item</button>
         </form>
       </div>
       }
