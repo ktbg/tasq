@@ -32,7 +32,7 @@ if(loading) {
   return (
     <>
       <Navbar items={items} id={id} type={"detail"}/>
-      <div className="mx-auto">
+      <div className="w-375 mx-auto">
         <div className="mt-8">
           <h1 className="w-full text-left pl-6 font-medium text-2xl">{title}</h1>
           <p className="text-sm text-left text-gray-600 pt-1 pl-6">{items.length} items</p>

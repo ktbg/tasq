@@ -9,6 +9,9 @@ module.exports = {
         tasqBorder: '#D8D4D6',
         tasqDelete: '#E0635E',
       },
+      width: {
+        '375': '375px',
+      }
     },
   },
   variants: {

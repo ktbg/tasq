@@ -28,7 +28,7 @@ export default function Home() {
   return (
     <div>
       <NavbarHome />
-      <div className="container mx-auto max-w-screen-sm">
+      <div className="w-375 mx-auto flex flex-col">
         <div className="mt-8">
           <h1 className="w-full text-left pl-6 font-medium text-2xl">My Lists</h1>
         </div>

@@ -52,18 +52,20 @@ export default function Create() {
   return (
     <div>
       <Navbar />
-      <Form 
-        name={name}
-        setName={setName}
-        listItem={listItem}
-        setListItem={setListItem}
-        handleTitleSubmit={handleTitleSubmit}
-        titleId={titleId}
-        toggle={toggle}
-        title={title}
-        isDisabled={isDisabled}
-        handleItemSubmit={handleItemSubmit}
-      />
+      <div className="w-375 mx-auto"> 
+        <Form 
+          name={name}
+          setName={setName}
+          listItem={listItem}
+          setListItem={setListItem}
+          handleTitleSubmit={handleTitleSubmit}
+          titleId={titleId}
+          toggle={toggle}
+          title={title}
+          isDisabled={isDisabled}
+          handleItemSubmit={handleItemSubmit}
+        />
+      </div>
     </div>
   )
 }
