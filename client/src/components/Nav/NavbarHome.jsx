@@ -18,13 +18,9 @@ export default function Navbar() {
           <Media queries={{ iPad:"(min-width: 1024px)"}}>
               {matches =>
                 matches.iPad ? (
-                  <NavLink to="/new">
-                    <CreateButton />
-                  </NavLink>
+                  <CreateButton />
                 ) : (
-                  <NavLink to="/new">
-                    <CreatePlus />
-                  </NavLink>
+                  <CreatePlus />
                 )
               }
           </Media>      
