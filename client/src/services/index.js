@@ -56,3 +56,9 @@ export const editItem = async(id, fields) => {
   // console.log(`patch request triggered`);
   return res.data;
 }
+
+export const editTitle = async(id, fields) => {
+  const res = await axios.patch(`${titleURL}/${id}`, { fields }, config);
+  console.log(`patch request triggered`);
+  return res.data;
+}

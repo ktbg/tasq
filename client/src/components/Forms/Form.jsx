@@ -38,19 +38,9 @@ export default function Form(props) {
       }catch(error) {
         console.log(error);
       }
-  } 
-  getItems();
-},[listItem, titleId, toggleDelete]);
-
-    // useEffect(()=> {
-    //   // const handleItemDelete = () => {
-    //     console.log(`item delete is ${deleteItem}`);
-    //   console.log(`onMouseUpCapture ${deleteItem}`);
-    //   setDeleteItem("");
-    //   console.log(`deleteItem is now ${deleteItem}`);
-    //   // await deleteItem(itemId);
-    //   // }
-    // },[deleteItem]);
+    } 
+    getItems();
+  },[listItem, titleId, toggleDelete]);
 
     const handleItemDelete = async (id) => {
       console.log(`this is handle delete ${id}`);

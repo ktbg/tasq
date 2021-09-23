@@ -29,8 +29,6 @@ export default function Create() {
 // attach the id# to each of the list items
   const handleItemSubmit = async (e) => {
     e.preventDefault();
-    // setInputs(inputs + 1);
-    // userList.push(e.target.value); ---- may not need this but keeping for now
     const fields = {
       listTitles: [`${titleId}`],
       item: listItem,
@@ -38,7 +36,6 @@ export default function Create() {
     try{
       await addListItem(fields);
       setListItem("");
-      // add new list item
     }catch(error){
       console.log(error);
     }
