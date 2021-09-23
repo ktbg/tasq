@@ -9,11 +9,9 @@ export default function ListDetail() {
   const [items, setItems] = useState([]);
   const { id, title } = useParams();
   const [loading, setLoading] = useState(true);
-  // const [itemClass, setItemClass] = useState("");
+  const [itemClass, setItemClass] = useState("text-xl text-left pl-4");
   const [checkedState, setCheckedState] = useState(0);
-  // const [itemsCompleted, setItemsCompleted] = useState(0);
-  // const [airtableState, setairtableState] = useState(0);
-  
+ 
   useEffect(()=> {
     const getItems = async () => {
       try{
@@ -32,28 +30,24 @@ export default function ListDetail() {
   // console.log(items);
 
 // --------------------------- checkbox logic -------------------------------------
-// airtable restrictions require numbers to trigger truthy or falsy
+// airtable sends strings so booleans read as truthy, require numbers to trigger truthy or falsy
 
 const handleCheckedItem = async (e, id) =>{
-  console.log(e);
-  const currentCheckedState = checkedState;
+  console.log(id);
+  console.log(e.target.defaultChecked);
+  // const currentCheckedState = checkedState;
   let airtableState = null;
-  console.log(`in the beginning airtableState is ${airtableState}`);
-  if(currentCheckedState === 0){
+  if(e.target.defaultChecked === false){
     airtableState = 1;
-    // setairtableState(1);
-    console.log(`XX airtableState is ${airtableState} with currentCheckedState ${currentCheckedState}`);
+    // setItemClass(`${itemClass} line-through`)
   } else {
     airtableState = 0;
-    // setairtableState(0);  
-    console.log(`YY airtableState is ${airtableState} with currentCheckedState ${currentCheckedState}`);
-  }
-  console.log(`right before fields airtableState is ${airtableState}`); 
+    // setItemClass()
+  } 
   const fields = {
       checked: airtableState
     }
-  const updatedArr = await editItem(id, fields);
-  console.log(updatedArr);
+  await editItem(id, fields);
   setCheckedState(airtableState);
 }
 
@@ -92,12 +86,12 @@ if(loading) {
                   <input 
                     type="checkbox" 
                     id={item.id}
-                    className={'detail-input'}
-                    checked={item.fields.checked}
-                    onChange={(e)=> handleCheckedItem(e, item.id)}
+                    className="detail-input"
+                    defaultChecked={item.fields.checked}
+                    onClick={(e)=> handleCheckedItem(e, item.id)}
                   />
                 </div>
-                <li htmlFor={item.id} className={`text-xl text-left pl-4`} key={item?.id}>{item?.fields.item}</li>
+                <li htmlFor={item.id} className={itemClass} key={item?.id}>{item?.fields.item}</li>
               </div>
             )
           })}
