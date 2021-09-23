@@ -29,6 +29,10 @@ export default function Form(props) {
     isDisabled
   } = props;
 
+  // =============================================== 
+  // get items for a specific listTitle ID 
+  // ===============================================
+
   useEffect(()=> {
     const getItems = async () => {
       try{
@@ -42,11 +46,14 @@ export default function Form(props) {
     getItems();
   },[listItem, titleId, toggleDelete]);
 
+  // ================================================
+  // handle delete of single items via red trash can
+  // ================================================
+
     const handleItemDelete = async (id) => {
       console.log(`this is handle delete ${id}`);
       await deleteItem(id);
       setToggleDelete((prevState)=> !prevState);
-      // console.log(`deleted item ${id}`);
     }
 
   return (

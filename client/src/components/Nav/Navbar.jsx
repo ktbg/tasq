@@ -1,4 +1,4 @@
-import { NavLink, useHistory } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import Media from 'react-media';
 import DeleteButton from '../Delete/DeleteButton';
 import '../../index.css';
@@ -7,23 +7,19 @@ import LeftArrow from './LeftArrow';
 
 export default function Navbar(props) {
   const { items, id, type, name } = props;
-  const history = useHistory();
 
   return (
     <nav className="flex justify-between px-6 mt-11 h-11">
       <div className="object-left my-auto">
       <Media queries={{ iPad:"(min-width: 1024px)"}}>
-            {matches =>
-              matches.iPad ? (
-                <NavLink to="/">
-                  <LeftChevron name={name} />
-                </NavLink>
-              ) : (
-                <NavLink to="/">
-                  <LeftArrow />
-                </NavLink>
-              )
-            }
+        {matches => matches.iPad ? (
+          <NavLink to="/">
+            <LeftChevron name={name} />
+          </NavLink>) : (
+          <NavLink to="/">
+            <LeftArrow />
+          </NavLink>)
+        }
       </Media>      
       </div>
       {type==="detail" ? 

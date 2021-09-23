@@ -106,10 +106,10 @@ if(loading) {
           })}
         </ul>
         {/* add new task to list when edit functionality is there */}
-        <Link to="/new">
+        <Link to={`/list/${id}/${title}/edit`}>
           <div className="text-darkPurple font-medium pl-6 mt-6 text-left w-80 h-10 rounded">
             <p className="inline-block pl-4 text-lg">+</p>
-            <p className="inline-block pl-4">Add New List</p>
+            <p className="inline-block pl-4">Add Items</p>
           </div>
         </Link>
       </div>

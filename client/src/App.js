@@ -2,7 +2,7 @@ import { Route } from 'react-router-dom';
 import Home from './components/Home/Home';
 import ListDetail from './components/ListDetail';
 import Create from './components/Create';
-// import Edit from './components/Edit';
+import Edit from './components/Forms/Edit';
 import './App.css';
 
 
@@ -19,7 +19,7 @@ function App() {
        <Create />
      </Route>
      <Route path="/list/:id/:title/edit">
-       Edit path
+       <Edit />
      </Route>
     </div>
   );
