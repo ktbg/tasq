@@ -120,10 +120,11 @@ To do list items are stored in an airtable api which returns data as follows:
 | App logic to create new list | H | 4 hrs| 4 hrs |  |
 | CSS styling for MVP mobile and desktop| H | 12 hrs| 10 hrs |  |
 | Post MVP - App logic to delete full list and list items | H | 3 hrs | 4 hrs |  |
-| Post MVP - App logic to mark list items as done | H | 3 hrs|  |  |
-| Post MVP - Progress chart animation for completed list items | M | 3 hr|  |  |
-| Post MVP - App logic to edit list items | L | 5 hr|  |  |
-| Total |  | 44 hrs|  |  |
+| Post MVP - App logic to mark list items as done | H | 3 hrs| 3 hrs |  |
+| Post MVP - Progress chart animation for completed list items | M | 3 hr |  |  |
+| Post MVP - App logic to edit list items | L | 5 hr| 1 hr |  |
+| Post MVP - CSS styling edit page and desktop view | L | 6 hr | |
+| Total |  | 50 hrs| 29.67 hrs |  |
 
 ## Dependencies
 
