@@ -4,6 +4,7 @@ import DeleteButton from '../Delete/DeleteButton';
 import '../../index.css';
 import LeftChevron from './LeftChevron';
 import LeftArrow from './LeftArrow';
+import EditButton from './EditButton';
 
 export default function Navbar(props) {
   const { items, id, type, name } = props;
@@ -24,7 +25,8 @@ export default function Navbar(props) {
       </div>
       {type==="detail" ? 
         <div className="float-right inline-block p-2 flex my-auto">
-          <DeleteButton items={items} id={id} />
+          <EditButton type={type}/>
+          <DeleteButton type={type} items={items} id={id} className="ml-4" />
         </div> : null}
     </nav>
   )

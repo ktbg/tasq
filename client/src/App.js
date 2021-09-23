@@ -15,7 +15,7 @@ function App() {
      <Route exact path="/list/:id/:title">
        <ListDetail />
      </Route>
-     <Route exact path="/new">
+     <Route path="/new">
        <Create />
      </Route>
      <Route path="/list/:id/:title/edit">

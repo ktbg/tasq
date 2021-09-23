@@ -1,9 +1,11 @@
-import { useParams, useHistory } from 'react-router-dom';
+import { useParams, useHistory, Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { getListItems, editTitle, deleteItem, addListItem } from '../../services';
 import Navbar from '../Nav/Navbar';
 import RedTrashCan from '../Delete/RedTrashCan';
 import FormInput from './FormInput';
+import SaveButton from './SaveButton';
+import DeleteButton from '../Delete/DeleteButton';
 // import Form from './Form';
 
 export default function Edit() {
@@ -69,7 +71,12 @@ export default function Edit() {
   
   return (
     <>
-      <Navbar name={"Cancel"} className={"text-darkPurple text-sm"}/>
+      <Navbar 
+        name={"Cancel"} 
+        className={"text-darkPurple text-sm"}
+        id={id}
+        title={title}
+      />
       <div className="w-375 mx-auto">
         <div className="w-375 mx-auto">
           <form onSubmit={handleTitleSubmit}>
@@ -114,6 +121,12 @@ export default function Edit() {
             <button className="mt-6 text-darkPurple font-light justify-start">+ Add New Item</button>
           </form>
         </div> 
+        <div className="flex justify-between mt-8">
+        <Link to={`/list/${id}/${title}`}>
+          <SaveButton />
+        </Link>
+          <DeleteButton items={items} id={id} type={"create"} className={"text-tasqDelete font-medium"}/>
+      </div> 
       </div> 
     </> 
   )
