@@ -12,6 +12,7 @@ export default function ListDetail() {
   // const [itemClass, setItemClass] = useState("");
   const [checkedState, setCheckedState] = useState(0);
   // const [itemsCompleted, setItemsCompleted] = useState(0);
+  // const [airtableState, setairtableState] = useState(0);
   
   useEffect(()=> {
     const getItems = async () => {
@@ -27,25 +28,33 @@ export default function ListDetail() {
       }
     } 
     getItems();
-  },[id]);
+  },[id, checkedState]);
   // console.log(items);
 
 // --------------------------- checkbox logic -------------------------------------
 // airtable restrictions require numbers to trigger truthy or falsy
 
 const handleCheckedItem = async (e, id) =>{
+  console.log(e);
   const currentCheckedState = checkedState;
+  let airtableState = null;
+  console.log(`in the beginning airtableState is ${airtableState}`);
   if(currentCheckedState === 0){
-    setCheckedState(1);
+    airtableState = 1;
+    // setairtableState(1);
+    console.log(`XX airtableState is ${airtableState} with currentCheckedState ${currentCheckedState}`);
   } else {
-    setCheckedState(0);  
-  } 
+    airtableState = 0;
+    // setairtableState(0);  
+    console.log(`YY airtableState is ${airtableState} with currentCheckedState ${currentCheckedState}`);
+  }
+  console.log(`right before fields airtableState is ${airtableState}`); 
   const fields = {
-      checked: checkedState,
+      checked: airtableState
     }
   const updatedArr = await editItem(id, fields);
   console.log(updatedArr);
-
+  setCheckedState(airtableState);
 }
 
 // -------------------------- counter for progress donut -------------------------
@@ -55,9 +64,9 @@ const handleCheckedItem = async (e, id) =>{
 //   })
 // }
 
-const handleClick = (e) => {
-  console.log(e);
-}
+// const handleClick = (e) => {
+//   console.log(e);
+// }
 
 if(loading) {
   return <div>Loading...</div>
@@ -78,7 +87,7 @@ if(loading) {
         <ul className="ml-6 mt-8">
           {items.map ((item, index) => {
             return (
-              <div key={index} className="bg-tasqGrey h-auto w-80 mb-2 rounded px-4 py-4 flex shadow" onClick={(e)=>handleClick(e)}>
+              <div key={index} className="bg-tasqGrey h-auto w-80 mb-2 rounded px-4 py-4 flex shadow">
                 <div className="my-auto">
                   <input 
                     type="checkbox" 
