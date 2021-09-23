@@ -4,22 +4,23 @@ import { useParams, Link } from 'react-router-dom';
 import { getListItems, editItem } from "../services";
 import '../index.css'
 
-// pass id of list title as the prop
 export default function ListDetail() {
   const [items, setItems] = useState([]);
   const { id, title } = useParams();
   const [loading, setLoading] = useState(true);
-  const [itemClass, setItemClass] = useState("text-xl text-left pl-4");
+  const [itemClass, setItemClass] = useState("text-xl text-left pl-4");  //kept for the moment in case I get the time to work with adding line-through style
   const [checkedState, setCheckedState] = useState(0);
+  const [totalCompleted, setTotalCompleted] = useState(0);
  
   useEffect(()=> {
     const getItems = async () => {
       try{
-        // set axios to variable
-        const viewListItems = await getListItems();
-        // filter to get results and setItems
-        const filterView = viewListItems.filter((item) => item.fields.listTitles[0] === `${id}`);
+        const viewListItems = await getListItems();                                                     // set axios to variable
+        const filterView = viewListItems.filter((item) => item.fields.listTitles[0] === `${id}`);       // filter to get results and setItems
         setItems(filterView);
+        const completeItems = filterView.filter((item) => item.fields.checked === 1);
+        setTotalCompleted(completeItems.length);
+        console.log(totalCompleted);
         setLoading(false);
       }catch(error) {
         console.log(error);
@@ -27,24 +28,45 @@ export default function ListDetail() {
     } 
     getItems();
   },[id, checkedState]);
-
-
+    // console.log(totalCompleted);
+  // console.log("just after axios call");
+  // console.log(items);
 // --------------------------- checkbox logic -------------------------------------
 // airtable sends strings so booleans read as truthy, require numbers to trigger truthy or falsy
 
 const handleCheckedItem = async (e, id) =>{
   let airtableState = null;
+  let complete = totalCompleted;
   if(e.target.defaultChecked === false){
     airtableState = 1;
+    complete += 1;
   } else {
     airtableState = 0;
+    complete -= 1;
   } 
   const fields = {
       checked: airtableState
     }
   await editItem(id, fields);
   setCheckedState(airtableState);
+  setTotalCompleted(complete);
 }
+// console.log(`total complete items is ${totalCompleted}`);   
+// console.log("just after handle checked item");
+// console.log(items);
+
+// console.log(`completed items are ${totalCompleted}`);
+
+// const getItemsComplete = (arr) => {
+//   let completeItems = arr.filter((item) => item.fields.checked === 1);
+//   return completeItems;
+// }
+
+// const completeItems = filterView.filter((item) => item.fields.checked === 1);
+// setTotalCompleted(completeItems);
+// console.log(completeItems.length);
+
+// setTotalCompleted(getItemsComplete(items));
 
 if(loading) {
   return <div>Loading...</div>
@@ -57,6 +79,9 @@ if(loading) {
         id={id} type={"detail"} 
         name={"Lists"} 
       />
+      {/* <header>
+
+      </header> */}
       <div className="w-375 mx-auto">
         <div className="mt-8 pl-1">
           <h1 className="w-full text-left pl-6 font-medium text-2xl">{title}</h1>
