@@ -43,11 +43,6 @@ export default function Create() {
       console.log(error);
     }
   }
-// post list items and id# to listItems end point
-// const handleListSave = async (e) => {
-//   e.preventDefault();
-
-// }
 
   return (
     <div>

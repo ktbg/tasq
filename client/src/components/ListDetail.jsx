@@ -1,15 +1,18 @@
 import Navbar from './Nav/Navbar';
 import { useState, useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom';
-import { getListItems } from "../services";
+import { getListItems, editItem } from "../services";
+import '../index.css'
 
 // pass id of list title as the prop
 export default function ListDetail() {
   const [items, setItems] = useState([]);
   const { id, title } = useParams();
   const [loading, setLoading] = useState(true);
-  // const [isChecked, setIsChecked] = useState(false);
-
+  // const [itemClass, setItemClass] = useState("");
+  const [checkedState, setCheckedState] = useState(0);
+  // const [itemsCompleted, setItemsCompleted] = useState(0);
+  
   useEffect(()=> {
     const getItems = async () => {
       try{
@@ -22,18 +25,39 @@ export default function ListDetail() {
       }catch(error) {
         console.log(error);
       }
-  } 
-  getItems();
-},[id]);
+    } 
+    getItems();
+  },[id]);
+  // console.log(items);
 
 // --------------------------- checkbox logic -------------------------------------
-// initial state set to unchecked
-// if an item is checked
-//      1. change style to strike through and lighten font color
-//      2. update api status to checked (for future to move or hide)
-//      3. add +1 to completed items for % complete donut, but to keep total list items
+// airtable restrictions require numbers to trigger truthy or falsy
 
+const handleCheckedItem = async (e, id) =>{
+  const currentCheckedState = checkedState;
+  if(currentCheckedState === 0){
+    setCheckedState(1);
+  } else {
+    setCheckedState(0);  
+  } 
+  const fields = {
+      checked: checkedState,
+    }
+  const updatedArr = await editItem(id, fields);
+  console.log(updatedArr);
 
+}
+
+// -------------------------- counter for progress donut -------------------------
+// const progress = (arr)=> {
+//   arr.map((item) => {
+//     return item.fields.checked === 1;
+//   })
+// }
+
+const handleClick = (e) => {
+  console.log(e);
+}
 
 if(loading) {
   return <div>Loading...</div>
@@ -52,18 +76,19 @@ if(loading) {
           <p className="text-sm text-left text-gray-600 pt-1 pl-6 font-light">{items.length} items</p>
         </div>
         <ul className="ml-6 mt-8">
-          {items.map ((item) => {
+          {items.map ((item, index) => {
             return (
-              <div key={item.id} className="bg-tasqGrey h-auto w-80 mb-2 rounded px-4 py-4 flex">
+              <div key={index} className="bg-tasqGrey h-auto w-80 mb-2 rounded px-4 py-4 flex shadow" onClick={(e)=>handleClick(e)}>
                 <div className="my-auto">
                   <input 
                     type="checkbox" 
-                    className="w-6 h-6 checked:bg-darkPurple checked:border-transparent"
-                    // onClick={handleCheckbox}
-                    // checkbox={}
+                    id={item.id}
+                    className={'detail-input'}
+                    checked={item.fields.checked}
+                    onChange={(e)=> handleCheckedItem(e, item.id)}
                   />
                 </div>
-                <li className="text-xl text-left pl-4"key={item?.id}>{item?.fields.item}</li>
+                <li htmlFor={item.id} className={`text-xl text-left pl-4`} key={item?.id}>{item?.fields.item}</li>
               </div>
             )
           })}
@@ -80,4 +105,3 @@ if(loading) {
   )
 }
 
-// setToggle((prevToggle))

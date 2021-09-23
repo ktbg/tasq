@@ -1,14 +1,19 @@
 @tailwind base;
 @tailwind components;
+
+.detail-input {
+  @apply w-6 h-6;
+}
+
 @tailwind utilities;
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&display=swap');
 
-body {
-  margin: 0;
-  background-color: white;
-  font-family: 'Poppins', sans-serif;
-  font-weight: 200;
-  --tw-text-opacity: 1;
-  color: rgba(17, 24, 39, var(--tw-text-opacity)); 
-}
-
+  body {
+    margin: 0;
+    background-color: white;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 200;
+    --tw-text-opacity: 1;
+    color: rgba(17, 24, 39, var(--tw-text-opacity)); 
+  }
+  

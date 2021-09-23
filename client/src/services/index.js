@@ -26,14 +26,14 @@ export const getListItems = async () => {
 
 // ------------------- for Create.jsx ------------------------
 export const createList = async (fields) => {
-  const res = await axios.post(titleURL, {fields}, config);
+  const res = await axios.post(titleURL, { fields }, config);
   // console.log("new list Title created");
   // console.log(res.data);
   return(res.data.id);
 }
 
 export const addListItem = async (fields) => {
-  const res = await axios.post(itemURL, {fields}, config);
+  const res = await axios.post(itemURL, { fields }, config);
   // console.log(res.data);
   return res.data;
 }
@@ -47,8 +47,12 @@ export const deleteList = async(id) => {
 // delete items from listItems table
 export const deleteItem = async(id) => {
   const res = await axios.delete(`${itemURL}/${id}`, config);
-  console.log(`inside index.js ${res.data}`)
   return res.data;
 }
 
 // ------------------ for Edit.jsx -------------------------
+export const editItem = async(id, fields) => {
+  const res = await axios.patch(`${itemURL}/${id}`, { fields }, config);
+  // console.log(`patch request triggered`);
+  return res.data;
+}
