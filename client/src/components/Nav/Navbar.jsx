@@ -15,9 +15,9 @@ export default function Navbar(props) {
       <Media queries={{ iPad:"(min-width: 1024px)"}}>
             {matches =>
               matches.iPad ? (
-                <button onClick={() => history.goBack()}>
+                <NavLink to="/">
                   <LeftChevron name={name} />
-                </button>
+                </NavLink>
               ) : (
                 <NavLink to="/">
                   <LeftArrow />

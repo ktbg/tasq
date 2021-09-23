@@ -27,22 +27,17 @@ export default function ListDetail() {
     } 
     getItems();
   },[id, checkedState]);
-  // console.log(items);
+
 
 // --------------------------- checkbox logic -------------------------------------
 // airtable sends strings so booleans read as truthy, require numbers to trigger truthy or falsy
 
 const handleCheckedItem = async (e, id) =>{
-  console.log(id);
-  console.log(e.target.defaultChecked);
-  // const currentCheckedState = checkedState;
   let airtableState = null;
   if(e.target.defaultChecked === false){
     airtableState = 1;
-    // setItemClass(`${itemClass} line-through`)
   } else {
     airtableState = 0;
-    // setItemClass()
   } 
   const fields = {
       checked: airtableState
@@ -50,17 +45,6 @@ const handleCheckedItem = async (e, id) =>{
   await editItem(id, fields);
   setCheckedState(airtableState);
 }
-
-// -------------------------- counter for progress donut -------------------------
-// const progress = (arr)=> {
-//   arr.map((item) => {
-//     return item.fields.checked === 1;
-//   })
-// }
-
-// const handleClick = (e) => {
-//   console.log(e);
-// }
 
 if(loading) {
   return <div>Loading...</div>
