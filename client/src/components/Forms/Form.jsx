@@ -10,9 +10,7 @@ import { getListItems } from "../../services";
 import SaveButton from "./SaveButton";
 import { deleteItem } from "../../services";
 
-// current iteration of the form for post request only, put is postMVP
-export default function Form(props) {
-  // const [title, setTitle] = useState("");
+export default function Form(props) {                       // current iteration of the form for post request only, put is postMVP
   const [items, setItems] = useState([]);
   const [toggleDelete, setToggleDelete] = useState(false);
 

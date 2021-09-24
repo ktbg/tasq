@@ -1,7 +1,6 @@
 
 export default function RedTrashCan(props) {
   const {className, itemId, handleItemDelete } = props;
-  console.log(itemId);
   
   return (
     <div id={itemId} onClick={()=> {handleItemDelete(itemId)}}>

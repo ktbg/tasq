@@ -32,6 +32,7 @@ export default function Create() {
     const fields = {
       listTitles: [`${titleId}`],
       item: listItem,
+      checked: 0,
     }
     try{
       await addListItem(fields);

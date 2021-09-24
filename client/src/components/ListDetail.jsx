@@ -1,7 +1,7 @@
 import Navbar from './Nav/Navbar';
 import { useState, useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom';
-import { getListItems, editItem } from "../services";
+import { getListItems, editItem, getListTitles } from "../services";
 import '../index.css'
 
 export default function ListDetail() {
@@ -11,16 +11,16 @@ export default function ListDetail() {
   const [itemClass, setItemClass] = useState("text-xl text-left pl-4");  //kept for the moment in case I get the time to work with adding line-through style
   const [checkedState, setCheckedState] = useState(0);
   const [totalCompleted, setTotalCompleted] = useState(0);
- 
+
   useEffect(()=> {
     const getItems = async () => {
       try{
-        const viewListItems = await getListItems();                                                     // set axios to variable
+        const viewListItems = await getListItems();                                                      // set axios to variable
         const filterView = viewListItems.filter((item) => item.fields.listTitles[0] === `${id}`);       // filter to get results and setItems
         setItems(filterView);
-        const completeItems = filterView.filter((item) => item.fields.checked === 1);
-        setTotalCompleted(completeItems.length);
-        console.log(totalCompleted);
+        // const completeItems = filterView.filter((item) => item.fields.checked === 1);
+        // setTotalCompleted(completeItems.length);
+        // console.log(totalCompleted);
         setLoading(false);
       }catch(error) {
         console.log(error);

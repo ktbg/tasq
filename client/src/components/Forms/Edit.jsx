@@ -1,6 +1,6 @@
 import { useParams, useHistory, Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { getListItems, editTitle, deleteItem, addListItem } from '../../services';
+import { getListItems, editTitle, deleteItem, addListItem, editItem } from '../../services';
 import Navbar from '../Nav/Navbar';
 import RedTrashCan from '../Delete/RedTrashCan';
 import FormInput from './FormInput';
@@ -23,7 +23,7 @@ export default function Edit() {
         const allListItems = await(getListItems());
         const filterListItems = allListItems.filter((item) => item.fields.listTitles[0] === `${id}`);
         // this returns all of the items in a specific list
-        console.log(filterListItems);
+        // console.log(filterListItems);
         setItems(filterListItems);
         // setLoading(false);
       }catch(error){
@@ -31,12 +31,12 @@ export default function Edit() {
       }
     }
     fetchItems();
-    console.log(items);
-  }, [id, toggleDelete])
+    // console.log(items);
+  }, [id, listItem, toggleDelete])
 
-  // ------------------ title change submit --------------------------
+  // ------------------ EDIT TITLE --------------------------
   //  on list name submit, post that to listTitle end point and return the id#
-  const handleTitleSubmit = async (e) => {
+  const handleTitleEdit = async (e) => {
     e.preventDefault();
     const fields = { name };
     try {
@@ -45,14 +45,37 @@ export default function Edit() {
       console.log(error);
     }
   }
-  
-  // ------------------ item change ---------------------------------
+
+    // ------------------ EDIT TITLE --------------------------
+  //  on list name submit, post that to listTitle end point and return the id#
+  const handleItemEdit = async (e) => {
+    e.preventDefault();
+    const fields = { name };
+    try {
+      await editItem(id, fields);
+    } catch(error){
+      console.log(error);
+    }
+  }
+
+  const testItemEdit = (e) => {
+    console.log(e);
+  }
+  const updateItems = (e) => {
+    if(e.target.id === undefined){
+      handleItemSubmit(e);
+    } else {
+      handleItemEdit(e);
+    }
+  }
+  // ------------------ ADD ITEM ------------------------------------
   // attach the id# to each of the list items
   const handleItemSubmit = async (e) => {
     e.preventDefault();
     const fields = {
       listTitles: [`${id}`],
       item: listItem,
+      checked: 0,
     }
     try{
       await addListItem(fields);
@@ -64,7 +87,7 @@ export default function Edit() {
 
   // ----------------- DElETE ITEM WITH RED TRASHCAN -----------------
   const handleItemDelete = async (id) => {
-    console.log(`this is handle delete ${id}`);
+    // console.log(`this is handle delete ${id}`);
     await deleteItem(id);
     setToggleDelete((prevState)=> !prevState);
   }
@@ -79,18 +102,19 @@ export default function Edit() {
       />
       <div className="w-375 mx-auto">
         <div className="w-375 mx-auto">
-          <form onSubmit={handleTitleSubmit}>
+          <form onBlur={handleTitleEdit}>
             <label className="text-gray-400 uppercase text-xs block text-left mb-1 pl-1">List Name</label>
               <input 
+                disabled={false}
                 type="text"
-                value={title}
+                defaultValue={title}
                 onChange={(e) => setName(e.target.value)}
                 className="border border-tasqBorder rounded h-8 w-80 content-start font-light p-4"
               /> 
           </form>
         </div>
         <div className="mt-8">
-          <form onSubmit={handleItemSubmit}> 
+          <form onSubmit={handleItemEdit}> 
             <label className="text-gray-400 uppercase text-xs block text-left pl-1">Items</label>
               {/* map over list items to render them in fields */}
               {items.map((item) => (
@@ -108,21 +132,26 @@ export default function Edit() {
                   />
               </div>
               ))}
+        
             {/* ---------------------- new list input ---------------------------------- */}
+        
             <div className="flex justify-between">
               <FormInput 
-                listItem={listItem} 
+                listItem="" 
                 setListItem={setListItem} 
                 placeholder={"Enter List Item"}
                 autoFocus={true}
               /> 
-              <RedTrashCan className={"my-3 mx-auto"}/>
+              <RedTrashCan 
+                className={"my-3 mx-auto"}
+                handleItemDelete={handleItemDelete}
+              />
             </div>
             <button className="mt-6 text-darkPurple font-light justify-start">+ Add New Item</button>
           </form>
         </div> 
         <div className="flex justify-between mt-8">
-        <Link to={`/list/${id}/${title}`}>
+        <Link to="/">
           <SaveButton />
         </Link>
           <DeleteButton items={items} id={id} type={"create"} className={"text-tasqDelete font-medium"}/>
@@ -131,3 +160,5 @@ export default function Edit() {
     </> 
   )
 }
+
+// to={`/list/${id}/${title}`}
