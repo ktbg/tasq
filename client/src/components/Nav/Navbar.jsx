@@ -7,7 +7,7 @@ import LeftArrow from './LeftArrow';
 import EditButton from './EditButton';
 
 export default function Navbar(props) {
-  const { items, id, type, name, pathName } = props;
+  const { items, id, type, name } = props;
   const history = useHistory();
 
   return (

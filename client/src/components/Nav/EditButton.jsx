@@ -26,7 +26,11 @@ export default function EditButton(props) {
                       </svg>
                     </NavLink>
                   }
-                  {matches.mobile && <EditIcon id={id} title={title}/>}
+                  {matches.mobile && 
+                    <NavLink to={`/list/${id}/${title}/edit`}>
+                      <EditIcon />
+                    </NavLink>
+                  } 
                 </Fragment>
               )}
         </Media>
