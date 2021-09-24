@@ -6,26 +6,32 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 import '../../index.css';
-import { getListItems } from "../../services";
 import SaveButton from "./SaveButton";
-import { deleteItem } from "../../services";
+import { deleteItem, getListItems, createList, addListItem } from "../../services";
 
 export default function Form(props) {                       // current iteration of the form for post request only, put is postMVP
   const [items, setItems] = useState([]);
   const [toggleDelete, setToggleDelete] = useState(false);
+  const [name, setName] = useState("");
+  const [listItem, setListItem] = useState([]);
+  const [titleId, setTitleId] = useState("");
+  const [toggle, setToggle] = useState(false);
+  const [title, setTitle] = useState("");
+  const [isDisabled, setIsDisabled] = useState(false);
+  // const [inputs, setInputs] = useState(0);
 
-  const {
-    name,
-    setName,
-    listItem,
-    setListItem,
-    handleTitleSubmit,
-    handleItemSubmit,
-    titleId,
-    toggle,
-    title,
-    isDisabled
-  } = props;
+  // const {
+  //   name,
+  //   setName,
+  //   listItem,
+  //   setListItem,
+  //   handleTitleSubmit,
+  //   handleItemSubmit,
+  //   titleId,
+  //   toggle,
+  //   title,
+  //   isDisabled
+  // } = props;
 
   // =============================================== 
   // get items for a specific listTitle ID 
@@ -44,6 +50,36 @@ export default function Form(props) {                       // current iteration
     getItems();
   },[listItem, titleId, toggleDelete]);
 
+ 
+
+//  on list name submit, post that to listTitle end point and return the id#
+  const handleTitleSubmit = async (e) => {
+    e.preventDefault();
+    const fields = { name };
+    try {
+      setTitleId(await createList(fields));
+      setTitle(name);
+      setIsDisabled(true);
+      setToggle(true);
+    } catch(error){
+      console.log(error);
+    }
+  }
+// attach the id# to each of the list items
+  const handleItemSubmit = async (e) => {
+    e.preventDefault();
+    const fields = {
+      listTitles: [`${titleId}`],
+      item: listItem,
+      checked: 0,
+    }
+    try{
+      await addListItem(fields);
+      setListItem("");
+    }catch(error){
+      console.log(error);
+    }
+  }
   // ================================================
   // handle delete of single items via red trash can
   // ================================================

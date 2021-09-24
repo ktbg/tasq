@@ -22,9 +22,9 @@ export default function FormInput(props) {
           autoFocus={autoFocus}
           type="text"
           name={listItem}
-          defaultValue={listItem}
+          value={listItem}
           onChange={(e)=> setListItem(e.target.value)}
-          onBlur={(e)=> setListItem(e.target.value)}
+          // onBlur={(e)=> setListItem(e.target.value)}
           handleItemUpdate={handleItemUpdate}
           placeholder={placeholder}
           className="border border-tasqBorder rounded mt-2 font-light w-72 h-8 pl-2 text-xs justify-start"

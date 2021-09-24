@@ -107,7 +107,8 @@ export default function Edit() {
               <input 
                 disabled={false}
                 type="text"
-                defaultValue={title}
+                // defaultValue={title}
+                placeholder={title}
                 onChange={(e) => setName(e.target.value)}
                 className="border border-tasqBorder rounded h-8 w-80 content-start font-light p-4"
               /> 
@@ -121,6 +122,7 @@ export default function Edit() {
                 <div key={item.id} className="flex justify-between">
                   <FormInput 
                     listItem={item.fields?.item} 
+                    // placeholder={item.fields?.item}
                     setListItem={setListItem} 
                     placeholder={null}
                     autoFocus={false}
