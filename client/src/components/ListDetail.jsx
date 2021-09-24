@@ -90,7 +90,7 @@ if(loading) {
         <ul className="ml-6 mt-8">
           {items.map ((item, index) => {
             return (
-              <div key={index} className="bg-tasqGrey h-auto w-80 mb-2 rounded px-4 py-4 flex shadow">
+              <div key={index} className="bg-tasqGrey hover:bg-tasqHover h-auto w-80 mb-2 rounded px-4 py-4 flex shadow">
                 <div className="my-auto">
                   <input 
                     type="checkbox" 

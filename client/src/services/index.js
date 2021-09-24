@@ -53,12 +53,12 @@ export const deleteItem = async(id) => {
 // ------------------ for Edit.jsx -------------------------
 export const editItem = async(id, fields) => {
   const res = await axios.patch(`${itemURL}/${id}`, { fields }, config);
-  // console.log(`patch request triggered`);
+  console.log(`patch request for item triggered`);
   return res.data;
 }
 
 export const editTitle = async(id, fields) => {
   const res = await axios.patch(`${titleURL}/${id}`, { fields }, config);
-  console.log(`patch request triggered`);
+  console.log(`patch request for title triggered`);
   return res.data;
 }

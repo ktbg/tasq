@@ -37,7 +37,7 @@ export default function Home() {
           {/* ------------------------------ lists ---------------------------------- */}
           {lists.map((list)=> (
             <Link to={`/list/${list.id}/${list.fields.name}`} key={list.id}>
-              <div className="bg-tasqGrey shadow h-19 w-80 mb-4 rounded px-4 py-4 flex justify-between" key={list.id}>
+              <div className="bg-tasqGrey hover:bg-tasqHover shadow h-19 w-80 mb-4 rounded px-4 py-4 flex justify-between" key={list.id}>
                 <div>
                   <h3 className="font-medium text-left w-66 py-3.75">{list.fields.name}</h3>
                   <TotalListItems id={list.id} className={"text-xs text-left pt-1 font-light"} />

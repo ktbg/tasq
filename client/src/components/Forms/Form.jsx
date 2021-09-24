@@ -20,19 +20,6 @@ export default function Form(props) {                       // current iteration
   const [isDisabled, setIsDisabled] = useState(false);
   // const [inputs, setInputs] = useState(0);
 
-  // const {
-  //   name,
-  //   setName,
-  //   listItem,
-  //   setListItem,
-  //   handleTitleSubmit,
-  //   handleItemSubmit,
-  //   titleId,
-  //   toggle,
-  //   title,
-  //   isDisabled
-  // } = props;
-
   // =============================================== 
   // get items for a specific listTitle ID 
   // ===============================================
@@ -50,9 +37,7 @@ export default function Form(props) {                       // current iteration
     getItems();
   },[listItem, titleId, toggleDelete]);
 
- 
 
-//  on list name submit, post that to listTitle end point and return the id#
   const handleTitleSubmit = async (e) => {
     e.preventDefault();
     const fields = { name };
@@ -65,7 +50,8 @@ export default function Form(props) {                       // current iteration
       console.log(error);
     }
   }
-// attach the id# to each of the list items
+
+
   const handleItemSubmit = async (e) => {
     e.preventDefault();
     const fields = {
@@ -80,9 +66,7 @@ export default function Form(props) {                       // current iteration
       console.log(error);
     }
   }
-  // ================================================
-  // handle delete of single items via red trash can
-  // ================================================
+
 
     const handleItemDelete = async (id) => {
       console.log(`this is handle delete ${id}`);
@@ -106,13 +90,12 @@ export default function Form(props) {                       // current iteration
         </form>
       </div>
 
-      {/* --------------------------list item inputs---------------------------------- */}
+      {/* -------------------list item inputs, render items after new item submitted ---------------- */}
+
       {!toggle ? <div></div> : 
       <div className="mt-8">
         <form onSubmit={handleItemSubmit}> 
         <label className="text-gray-400 uppercase text-xs block text-left pl-1">Items</label>
-
-          {/* map over list items to render them in fields */}
           {items.map((item) => (
             <div key={item.id} className="flex justify-between">
               <FormInput 
@@ -130,6 +113,7 @@ export default function Form(props) {                       // current iteration
           ))}
           
           {/* ---------------------- new list input ---------------------------------- */}
+          
           <div className="flex justify-between">
             <FormInput 
               listItem={listItem} 

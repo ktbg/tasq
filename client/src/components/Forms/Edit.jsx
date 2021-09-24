@@ -1,92 +1,109 @@
+// import { useParams } from 'react-router-dom';
+// import { useState } from 'react';
+// import {editTitle, editItem} from '../../services'
+// import Form from './Form';
 import { useParams, Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { getListItems, editTitle, deleteItem, addListItem, editItem } from '../../services';
+
 import Navbar from '../Nav/Navbar';
 import RedTrashCan from '../Delete/RedTrashCan';
 import FormInput from './FormInput';
 import SaveButton from './SaveButton';
 import DeleteButton from '../Delete/DeleteButton';
-// import Form from './Form';
+
 
 export default function Edit() {
   const { id, title } = useParams();
-  const [items, setItems] = useState([]);
-  const [name, setName] = useState("");
-  const [listItem, setListItem] = useState("");
-  const [toggleDelete, setToggleDelete] = useState(false);
+  const [items, setItems] = useState([]);                               //initial array of items for this list
+  const [name, setName] = useState(title);                              // used to indicate title of the list to manipulate
+  const [listItem, setListItem] = useState("");                         //sets initial item populated with existing list items
+  const [newListItem, setNewListItem] = useState("");                   // sets new list items added to the list
+  const [toggleDelete, setToggleDelete] = useState(false);              //used to trigger re-render of the page on click of delete trash can
+
 
   // --------- get items for the list id you want to edit -----------
-  useEffect(() => {
+
+
+  useEffect(() => {                                                                         
     const fetchItems = async () => {
       try{
         const allListItems = await(getListItems());
         const filterListItems = allListItems.filter((item) => item.fields.listTitles[0] === `${id}`);
-        // this returns all of the items in a specific list
-        // console.log(filterListItems);
         setItems(filterListItems);
-        // setLoading(false);
       }catch(error){
         console.log(error);
       }
     }
     fetchItems();
-    // console.log(items);
-  }, [id, listItem, toggleDelete])
+  }, [id, newListItem, listItem, toggleDelete])
 
-  // ------------------ EDIT TITLE --------------------------
-  //  on list name submit, post that to listTitle end point and return the id#
-  const handleTitleEdit = async (e) => {
+
+// ------------------ EDIT TITLE --------------------------
+
+
+  const handleTitleEdit = async (e) => {                                                    
     e.preventDefault();
     const fields = { name };
     try {
-      await editTitle(id, fields);
+      const newNameData = await editTitle(id, fields);
+      setName(newNameData.fields?.name)
     } catch(error){
       console.log(error);
     }
   }
 
-    // ------------------ EDIT TITLE --------------------------
-  //  on list name submit, post that to listTitle end point and return the id#
-  const handleItemEdit = async (e) => {
+
+  // ------------------ EDIT ITEM --------------------------
+    
+
+  const handleItemEdit = async (e, id) => {                                                     
     e.preventDefault();
-    const fields = { name };
+    const fields = { 
+      item: newListItem,
+     };
     try {
       await editItem(id, fields);
+      setListItem("");
     } catch(error){
       console.log(error);
     }
   }
 
- 
-  // const updateItems = (e) => {
-  //   if(e.target.id === undefined){
-  //     handleItemSubmit(e);
-  //   } else {
-  //     handleItemEdit(e);
-  //   }
-  // }
-  // ------------------ ADD ITEM ------------------------------------
-  // attach the id# to each of the list items
+
+  // ------------------ ADD NEW ITEM ------------------------------------
+
+
   const handleItemSubmit = async (e) => {
     e.preventDefault();
     const fields = {
       listTitles: [`${id}`],
-      item: listItem,
+      item: newListItem,
       checked: 0,
     }
     try{
       await addListItem(fields);
-      setListItem("");
+      setNewListItem("");
     }catch(error){
       console.log(error);
     }
   }
 
+
   // ----------------- DElETE ITEM WITH RED TRASHCAN -----------------
+
+
   const handleItemDelete = async (id) => {
-    // console.log(`this is handle delete ${id}`);
     await deleteItem(id);
     setToggleDelete((prevState)=> !prevState);
+  }
+
+  const changeItem = (e, id) => {
+    if (!id){
+      setNewListItem(e.target.value);
+    } else {
+      setListItem(e.target.value);
+    }
   }
   
   return (
@@ -97,32 +114,38 @@ export default function Edit() {
         id={id}
         title={title}
       />
+
+      {/* -------------------- render and edit existing title ------------------------------------- */}
+
       <div className="w-375 mx-auto">
         <div className="w-375 mx-auto">
-          <form onSubmit={handleTitleEdit}>
+          <form onBlur={handleTitleEdit}> 
             <label className="text-gray-400 uppercase text-xs block text-left mb-1 pl-1">List Name</label>
               <input 
                 disabled={false}
                 type="text"
-                value={title}
-                // placeholder={title}
+                value={name}
                 onChange={(e) => setName(e.target.value)}
                 className="border border-tasqBorder rounded h-8 w-80 content-start font-light p-4"
               /> 
           </form>
         </div>
-        {/* -------------------- edit items ------------------------------- */}
+
+        {/* -------------------- render and edit existing list items ------------------------------- */}
+        
         <div className="mt-8">
-          <form onSubmit={handleItemSubmit}> 
+          <form onBlur={handleItemEdit}> 
             <label className="text-gray-400 uppercase text-xs block text-left pl-1">Items</label>
-              {/* map over list items to render them in fields */}
               {items.map((item) => (
                 <div key={item.id} className="flex justify-between">
-                  <FormInput 
+                  <FormInput
+                    id={item.id} 
                     listItem={item.fields?.item} 
-                    setListItem={setListItem} 
+                    // handleItemEdit={handleItemEdit}
                     placeholder={null}
                     autoFocus={false}
+                    // setNewListItem={setListItem}
+                    changeItem={changeItem}
                   /> 
                   <RedTrashCan 
                     itemId={item.id} 
@@ -130,18 +153,21 @@ export default function Edit() {
                     handleItemDelete={handleItemDelete}
                   />
               </div>
-              ))}
-        
+              ))} 
+          </form>
             {/* ---------------------- new list input ---------------------------------- */}
-        
+          <form onSubmit={handleItemSubmit}>
             <div className="flex justify-between">
               <FormInput 
-                listItem="" 
-                setListItem={setListItem} 
+                listItem={newListItem}
+                // setNewListItem={setNewListItem} 
+                changeItem={changeItem}
                 placeholder={"Enter List Item"}
                 autoFocus={true}
               /> 
-              <RedTrashCan className={"my-3 mx-auto"} />
+              <RedTrashCan 
+                className={"my-3 mx-auto"}
+                handleItemDelete={handleItemDelete} />
             </div>
             <button className="mt-6 text-darkPurple font-light justify-start">+ Add New Item</button>
           </form>
@@ -157,4 +183,3 @@ export default function Edit() {
     </> 
   )
 }
-
