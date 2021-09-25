@@ -8,8 +8,9 @@ module.exports = {
         tasqGrey: '#F7F6F6',
         tasqBorder: '#D8D4D6',
         tasqDelete: '#E0635E',
-        tasqHover: '#e1e0e0',
-        tasqDeleteHover: '#B7504c',
+        tasqHover: '#e7e4e4',
+        tasqDeleteHover: '#c12a25',
+        tasqPurpleHover: '#6649b6'
       },
       width: {
         '375': '375px',

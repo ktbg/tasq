@@ -131,12 +131,15 @@ export default function Form(props) {                       // current iteration
             /> 
             <RedTrashCan className={"my-3 mx-auto"}/>
           </div>
-          <button className="mt-6 text-darkPurple font-light justify-start">+ Add New Item</button>
+          <div className="text-darkPurple text-left font-regular mt-5 hover:tasqPurpleHover">
+            <p className="inline-block pl-4 text-lg">+</p>
+            <p className="inline-block pl-4">Add List Item</p>
+          </div>
         </form>
       </div>
       }
       
-      <div className="flex justify-between mt-8">
+      <div className="flex justify-between mt-10">
         <Link to={`/list/${titleId}/${title}`}>
           <SaveButton />
         </Link>

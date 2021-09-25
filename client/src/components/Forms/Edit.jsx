@@ -1,9 +1,3 @@
-// import { useParams } from 'react-router-dom';
-// import { useState } from 'react';
-// import {editTitle, editItem} from '../../services'
-// import Form from './Form';
-// import FormInput from './FormInput';
-
 import { useParams, Link } from 'react-router-dom';
 import { useState, useEffect, useRef } from 'react';
 import { getListItems, editTitle, deleteItem, addListItem, editItem } from '../../services';
@@ -102,14 +96,7 @@ export default function Edit() {
     setToggleDelete((prevState)=> !prevState);
   }
 
-  // const changeItem = (e, id) => {
-  //   if (!id){
-  //     setNewListItem(e.target.value);
-  //   } else {
-  //     setListItem(e.target.value);
-  //   }
-  // }
-  
+ 
   return (
     <>
       <Navbar 
@@ -122,91 +109,69 @@ export default function Edit() {
       {/* -------------------- render and edit existing title ------------------------------------- */}
 
       <div className="w-375 mx-auto">
-        <div className="w-375 mx-auto">
-          <form onBlur={handleTitleEdit}> 
-            <label className="text-gray-400 uppercase text-xs block text-left mb-1 pl-1">List Name</label>
-              <input 
-                disabled={false}
-                type="text"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                className="border border-tasqBorder rounded h-8 w-80 content-start font-light p-4"
-              /> 
-          </form>
-        </div>
+        <div className="w-94 mx-6 mt-8">
+          <div className="flex">    
+            <form onBlur={handleTitleEdit}> 
+              <label className="text-gray-400 uppercase text-xs block text-left mb-1 pl-1">List Name</label>
+                <input 
+                  disabled={false}
+                  type="text"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  className="border border-tasqBorder rounded h-8 w-80 content-start font-light p-4"
+                /> 
+            </form>
+          </div>
 
-        {/* -------------------- render and edit existing list items ------------------------------- */}
-        
-        <div className="mt-8">
-          <form onBlur={handleItemEdit}> 
-            <label className="text-gray-400 uppercase text-xs block text-left pl-1">Items</label>
-              {items.map((item) => (
-                <div key={item.id} className="flex justify-between">
-                  {/* try simple input repeated */}
-                  {/* <FormInput
-                    id={item.id} 
-                    listItem={item.fields?.item} 
-                    // handleItemEdit={handleItemEdit}
-                    placeholder={null}
-                    autoFocus={false}
-                    setNewListItem={setListItem}
-                    
-                  />  */}
-                  <input 
-                    id={item.id}
-                    type="text"
-                    defaultValue={item.fields?.item}
-                    // onChange={(e)=>{
-                    //   console.log(e.target.value)
-                    //   setNewListItem(e.target.value)
-                    // }}
-                    ref={editField}
-                    placeholder={null}
-                    className="border border-tasqBorder rounded mt-2 font-light w-72 h-8 pl-2 text-xs justify-start"
-                  />
-                  <RedTrashCan 
-                    itemId={item.id} 
-                    className={"my-3 mx-auto"}
-                    handleItemDelete={handleItemDelete}
-                  />
+          {/* -------------------- render and edit existing list items ------------------------------- */}
+          
+          <div className="mt-8">
+            <form onBlur={handleItemEdit}> 
+              <label className="text-gray-400 uppercase text-xs block text-left pl-1">Items</label>
+                {items.map((item) => (
+                  <div key={item.id} className="flex justify-between">
+                    <input 
+                      id={item.id}
+                      type="text"
+                      defaultValue={item.fields?.item}
+                      ref={editField}
+                      placeholder={null}
+                      className="border border-tasqBorder rounded mt-2 font-light w-72 h-8 pl-2 text-xs justify-start"
+                    />
+                    <RedTrashCan 
+                      itemId={item.id} 
+                      className={"my-3 mx-auto"}
+                      handleItemDelete={handleItemDelete}
+                    />
+                </div>
+                ))} 
+            </form>
+              {/* ---------------------- new list input ---------------------------------- */}
+            <form onSubmit={handleItemSubmit}>
+              <div className="flex justify-between">
+                <input 
+                  autoFocus={true}
+                  type="text"
+                  value={listItem}
+                  onChange={(e)=>{setListItem(e.target.value)}}
+                  placeholder={"Enter List Item"}
+                  className="border border-tasqBorder rounded mt-2 font-light w-72 h-8 pl-2 text-xs justify-start"
+                />  
+                <RedTrashCan 
+                  className={"my-3 mx-auto"}
+                  handleItemDelete={handleItemDelete} />
               </div>
-              ))} 
-          </form>
-            {/* ---------------------- new list input ---------------------------------- */}
-          <form onSubmit={handleItemSubmit}>
-            <div className="flex justify-between">
-              {/* <FormInput 
-                listItem=""
-                setListItem={setListItem}
-                // changeItem={changeItem}
-                placeholder={"Enter List Item"}
-                autoFocus={true}
-              /> */}
-              <input 
-                autoFocus={true}
-                type="text"
-                value={listItem}
-                onChange={(e)=>{
-                  console.log(e.target.value);
-                  setListItem(e.target.value)
-                }}
-                placeholder={"Enter List Item"}
-                className="border border-tasqBorder rounded mt-2 font-light w-72 h-8 pl-2 text-xs justify-start"
-              />  
-              <RedTrashCan 
-                className={"my-3 mx-auto"}
-                handleItemDelete={handleItemDelete} />
-            </div>
-            <button className="mt-6 text-darkPurple font-light justify-start">+ Add New Item</button>
-          </form>
-        </div> 
+              <button className="mt-6 text-darkPurple font-light justify-start">+ Add New Item</button>
+            </form>
+          </div> 
 
-        <div className="flex justify-between mt-8">
-        <Link to="/">
-          <SaveButton />
-        </Link>
-          <DeleteButton items={items} id={id} type={"create"} className={"text-tasqDelete font-medium"}/>
-      </div> 
+          <div className="flex justify-between mt-8">
+          <Link to="/">
+            <SaveButton />
+          </Link>
+            <DeleteButton items={items} id={id} type={"create"} className={"text-tasqDelete font-medium"}/>
+          </div> 
+        </div>  
       </div> 
     </> 
   )

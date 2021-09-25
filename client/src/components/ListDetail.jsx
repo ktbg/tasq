@@ -1,16 +1,17 @@
 import Navbar from './Nav/Navbar';
 import { useState, useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom';
-import { getListItems, editItem, getListTitles } from "../services";
+import { getListItems, editItem } from "../services";
 import '../index.css'
 
 export default function ListDetail() {
   const [items, setItems] = useState([]);
   const { id, title } = useParams();
   const [loading, setLoading] = useState(true);
-  const [itemClass, setItemClass] = useState("text-xl text-left pl-4");  //kept for the moment in case I get the time to work with adding line-through style
   const [checkedState, setCheckedState] = useState(0);
   const [totalCompleted, setTotalCompleted] = useState(0);
+
+  const itemClass = "text-xl text-left pl-4"; 
 
   useEffect(()=> {
     const getItems = async () => {
