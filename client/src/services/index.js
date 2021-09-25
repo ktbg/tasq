@@ -20,21 +20,17 @@ export const getListTitles = async () => {
 // ------------------- for ListDetails.jsx -------------------
 export const getListItems = async () => {
   const res = await axios.get(itemURL, config);
-  // console.log(res.data.records);
   return res.data.records;
 }
 
 // ------------------- for Create.jsx ------------------------
 export const createList = async (fields) => {
   const res = await axios.post(titleURL, { fields }, config);
-  // console.log("new list Title created");
-  // console.log(res.data);
   return(res.data.id);
 }
 
 export const addListItem = async (fields) => {
   const res = await axios.post(itemURL, { fields }, config);
-  // console.log(res.data);
   return res.data;
 }
 
@@ -53,12 +49,10 @@ export const deleteItem = async(id) => {
 // ------------------ for Edit.jsx -------------------------
 export const editItem = async(id, fields) => {
   const res = await axios.patch(`${itemURL}/${id}`, { fields }, config);
-  console.log(`patch request for item triggered`);
   return res.data;
 }
 
 export const editTitle = async(id, fields) => {
   const res = await axios.patch(`${titleURL}/${id}`, { fields }, config);
-  console.log(`patch request for title triggered`);
   return res.data;
 }

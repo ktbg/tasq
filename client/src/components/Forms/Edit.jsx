@@ -13,7 +13,8 @@ export default function Edit() {
   const [items, setItems] = useState([]);                               //initial array of items for this list
   const [name, setName] = useState(title);                              // used to indicate title of the list to manipulate
   const [listItem, setListItem] = useState("");                         //sets initial item populated with existing list items                  
-  const [toggleDelete, setToggleDelete] = useState(false);              //used to trigger re-render of the page on click of delete trash can
+  const [toggleDelete, setToggleDelete] = useState(false);               //used to trigger re-render of the page on click of delete trash can
+  const inputStyle = "border border-tasqBorder rounded mt-2 font-light w-72 h-8 pl-2 text-xs justify-start";    
   const editField = useRef("");                                         //used to populate edit form with default values while being able to capture edited values
 
 
@@ -55,10 +56,10 @@ export default function Edit() {
   const handleItemEdit = async (e) => {                                                     
     e.preventDefault();
     let editValue = e.target.value;
-    console.log(editValue);
     const itemId = e.target.id;
     const fields = { 
       item: editValue,
+      checked: 0,
      };
     try {
       await editItem(itemId, fields);
@@ -118,7 +119,7 @@ export default function Edit() {
                   type="text"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  className="border border-tasqBorder rounded h-8 w-80 content-start font-light p-4"
+                  className={inputStyle}
                 /> 
             </form>
           </div>
@@ -130,13 +131,15 @@ export default function Edit() {
               <label className="text-gray-400 uppercase text-xs block text-left pl-1">Items</label>
                 {items.map((item) => (
                   <div key={item.id} className="flex justify-between">
+                    
                     <input 
                       id={item.id}
                       type="text"
                       defaultValue={item.fields?.item}
                       ref={editField}
                       placeholder={null}
-                      className="border border-tasqBorder rounded mt-2 font-light w-72 h-8 pl-2 text-xs justify-start"
+                      className={item.fields.checked === 0 ? `${inputStyle}` : `${inputStyle} line-through`}
+                      onChange={(e)=>e.target.classList=inputStyle}
                     />
                     <RedTrashCan 
                       itemId={item.id} 
@@ -155,7 +158,7 @@ export default function Edit() {
                   value={listItem}
                   onChange={(e)=>{setListItem(e.target.value)}}
                   placeholder={"Enter List Item"}
-                  className="border border-tasqBorder rounded mt-2 font-light w-72 h-8 pl-2 text-xs justify-start"
+                  className={inputStyle}
                 />  
                 <RedTrashCan 
                   className={"my-3 mx-auto"}
