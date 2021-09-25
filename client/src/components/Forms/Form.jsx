@@ -9,7 +9,7 @@ import '../../index.css';
 import SaveButton from "./SaveButton";
 import { deleteItem, getListItems, createList, addListItem } from "../../services";
 
-export default function Form(props) {                       // current iteration of the form for post request only, put is postMVP
+export default function Form(props) {                     
   const [items, setItems] = useState([]);
   const [toggleDelete, setToggleDelete] = useState(false);
   const [name, setName] = useState("");
@@ -19,7 +19,6 @@ export default function Form(props) {                       // current iteration
   const [title, setTitle] = useState("");
   const [isDisabled, setIsDisabled] = useState(false);
 
-  // const [inputs, setInputs] = useState(0);
 
   // =============================================== 
   // get items for a specific listTitle ID 
@@ -75,10 +74,6 @@ export default function Form(props) {                       // current iteration
       setToggleDelete((prevState)=> !prevState);
     }
 
-    // const changeItem = (e) => {
-    //   setListItem(e.target.value);
-    // }  
-
   return (
     <div className="w-94 mx-6 mt-8">
       <div className="flex">
@@ -91,7 +86,14 @@ export default function Form(props) {                       // current iteration
             onChange={(e) => setName(e.target.value)}
             className="border border-tasqBorder rounded h-8 w-80 content-start font-light p-4"
           /> 
-          {!toggle ? <button className="mt-6 text-darkPurple font-light">+ Add New Item</button> : null}
+          {!toggle ? (
+            <div className="flex justify-items-start">
+              <button className="text-darkPurple hover:text-tasqPurpleHover text-left content-start font-light mt-5 ">
+                <span className="px-4 text-lg">+</span>
+                Add New Item
+              </button>
+            </div>
+          ) : null}
         </form>
       </div>
 
@@ -105,15 +107,13 @@ export default function Form(props) {                       // current iteration
             <div key={item.id} className="flex justify-between">
               <FormInput 
                 listItem={item.fields?.item} 
-                // setNewListItem={setNewListItem} 
                 setListItem={setListItem}
                 placeholder={null}
                 autoFocus={false}
-                // changeItem={changeItem}
               /> 
               <RedTrashCan 
                 itemId={item.id} 
-                className={"my-3 mx-auto"}
+                className={"my-3 mx-auto hover:tasqDeleteRed"}
                 handleItemDelete={handleItemDelete}
               />
           </div>
@@ -125,15 +125,16 @@ export default function Form(props) {                       // current iteration
             <FormInput 
               listItem={listItem} 
               setListItem={setListItem} 
-              // changeItem={changeItem}
               placeholder={"Enter List Item"}
               autoFocus={true}
             /> 
-            <RedTrashCan className={"my-3 mx-auto"}/>
+            <RedTrashCan className={"my-3 mx-auto hover:tasqDeleteRed"}/>
           </div>
-          <div className="text-darkPurple text-left font-regular mt-5 hover:tasqPurpleHover">
-            <p className="inline-block pl-4 text-lg">+</p>
-            <p className="inline-block pl-4">Add List Item</p>
+          <div className="flex justify-items-start">
+            <button className="text-darkPurple hover:text-tasqPurpleHover text-left content-start font-light mt-5 ">
+              <span className="px-4 text-lg">+</span>
+              Add List Item
+            </button>
           </div>
         </form>
       </div>
@@ -143,7 +144,7 @@ export default function Form(props) {                       // current iteration
         <Link to={`/list/${titleId}/${title}`}>
           <SaveButton />
         </Link>
-        <DeleteButton items={items} id={titleId} type={"create"} className={"text-tasqDelete font-medium"}/>
+        <DeleteButton items={items} id={titleId} type={"create"} className={"text-tasqDelete hover:text-tasqDeleteHover font-medium"}/>
       </div>  
     </div>
   )

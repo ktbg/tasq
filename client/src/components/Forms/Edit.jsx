@@ -161,7 +161,12 @@ export default function Edit() {
                   className={"my-3 mx-auto"}
                   handleItemDelete={handleItemDelete} />
               </div>
-              <button className="mt-6 text-darkPurple font-light justify-start">+ Add New Item</button>
+              <div className="flex justfy-start" >
+                <button className="mt-6 text-darkPurple hover:text-tasqPurpleHover font-light justify-start">
+                  <span className="px-4 text-lg">+</span> 
+                  Add New Item
+                </button>
+              </div>
             </form>
           </div> 
 
@@ -169,7 +174,7 @@ export default function Edit() {
           <Link to="/">
             <SaveButton />
           </Link>
-            <DeleteButton items={items} id={id} type={"create"} className={"text-tasqDelete font-medium"}/>
+            <DeleteButton items={items} id={id} type={"create"} className={"text-tasqDelete hover:text-tasqDeleteHover font-medium"}/>
           </div> 
         </div>  
       </div> 

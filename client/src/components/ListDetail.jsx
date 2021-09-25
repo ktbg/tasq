@@ -19,9 +19,6 @@ export default function ListDetail() {
         const viewListItems = await getListItems();                                                      // set axios to variable
         const filterView = viewListItems.filter((item) => item.fields.listTitles[0] === `${id}`);       // filter to get results and setItems
         setItems(filterView);
-        // const completeItems = filterView.filter((item) => item.fields.checked === 1);
-        // setTotalCompleted(completeItems.length);
-        // console.log(totalCompleted);
         setLoading(false);
       }catch(error) {
         console.log(error);
@@ -29,9 +26,7 @@ export default function ListDetail() {
     } 
     getItems();
   },[id, checkedState]);
-    // console.log(totalCompleted);
-  // console.log("just after axios call");
-  // console.log(items);
+
 // --------------------------- checkbox logic -------------------------------------
 // airtable sends strings so booleans read as truthy, require numbers to trigger truthy or falsy
 
@@ -52,22 +47,6 @@ const handleCheckedItem = async (e, id) =>{
   setCheckedState(airtableState);
   setTotalCompleted(complete);
 }
-// console.log(`total complete items is ${totalCompleted}`);   
-// console.log("just after handle checked item");
-// console.log(items);
-
-// console.log(`completed items are ${totalCompleted}`);
-
-// const getItemsComplete = (arr) => {
-//   let completeItems = arr.filter((item) => item.fields.checked === 1);
-//   return completeItems;
-// }
-
-// const completeItems = filterView.filter((item) => item.fields.checked === 1);
-// setTotalCompleted(completeItems);
-// console.log(completeItems.length);
-
-// setTotalCompleted(getItemsComplete(items));
 
 if(loading) {
   return <div>Loading...</div>
@@ -80,9 +59,6 @@ if(loading) {
         id={id} type={"detail"} 
         name={"Lists"} 
       />
-      {/* <header>
-
-      </header> */}
       <div className="w-375 mx-auto">
         <div className="mt-8 pl-1">
           <h1 className="w-full text-left pl-6 font-medium text-2xl">{title}</h1>
@@ -106,9 +82,8 @@ if(loading) {
             )
           })}
         </ul>
-        {/* add new task to list when edit functionality is there */}
         <Link to={`/list/${id}/${title}/edit`}>
-          <div className="text-darkPurple font-medium pl-6 mt-6 text-left w-80 h-10 rounded">
+          <div className="text-darkPurple purple-hover font-regular pl-6 mt-6 text-left w-80 h-10 rounded">
             <p className="inline-block pl-4 text-lg">+</p>
             <p className="inline-block pl-4">Add Items</p>
           </div>

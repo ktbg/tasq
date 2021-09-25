@@ -14,7 +14,7 @@ module.exports = {
       },
       width: {
         '375': '375px',
-      }
+      },
     },
   },
   variants: {

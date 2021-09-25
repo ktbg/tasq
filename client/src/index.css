@@ -5,8 +5,12 @@
   @apply w-6 h-6;
 }
 
-svg.purple-hover:hover {
+.purple-hover:hover {
   color: #6649b6;
+}
+
+svg:hover {
+  filter: brightness(70%)
 }
 
 @tailwind utilities;

@@ -50,7 +50,7 @@ export default function Home() {
           ))}
           
           <Link to="/new">
-            <div className="text-darkPurple text-left font-medium w-80 h-10 rounded">
+            <div className="text-darkPurple purple-hover text-left font-regular w-80 h-10 rounded">
               <p className="inline-block pl-4 text-lg">+</p>
               <p className="inline-block pl-4">Add New List</p>
             </div>
