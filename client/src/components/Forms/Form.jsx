@@ -18,6 +18,7 @@ export default function Form(props) {                       // current iteration
   const [toggle, setToggle] = useState(false);
   const [title, setTitle] = useState("");
   const [isDisabled, setIsDisabled] = useState(false);
+
   // const [inputs, setInputs] = useState(0);
 
   // =============================================== 
@@ -74,6 +75,10 @@ export default function Form(props) {                       // current iteration
       setToggleDelete((prevState)=> !prevState);
     }
 
+    // const changeItem = (e) => {
+    //   setListItem(e.target.value);
+    // }  
+
   return (
     <div className="w-94 mx-6 mt-8">
       <div className="flex">
@@ -100,9 +105,11 @@ export default function Form(props) {                       // current iteration
             <div key={item.id} className="flex justify-between">
               <FormInput 
                 listItem={item.fields?.item} 
-                setListItem={setListItem} 
+                // setNewListItem={setNewListItem} 
+                setListItem={setListItem}
                 placeholder={null}
                 autoFocus={false}
+                // changeItem={changeItem}
               /> 
               <RedTrashCan 
                 itemId={item.id} 
@@ -118,6 +125,7 @@ export default function Form(props) {                       // current iteration
             <FormInput 
               listItem={listItem} 
               setListItem={setListItem} 
+              // changeItem={changeItem}
               placeholder={"Enter List Item"}
               autoFocus={true}
             /> 
