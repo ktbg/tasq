@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { getListTitles } from '../../services';
-import NavbarHome from '../Nav/NavbarHome';
 import TotalListItems from './TotalListItems';
 
 
@@ -27,14 +26,14 @@ export default function Home() {
 
   return (
     <div>
-      <NavbarHome />
-      <div className="w-375 mx-auto flex flex-col">
-        <div className="mt-8">
+      <div className="flex flex-col md:w-3/5 mt-8 mx-auto ">
+        <div className="mt-8 md:pl-8">
           <h1 className="w-full text-left pl-6 font-medium text-2xl">My Lists</h1>
         </div>
-        <div className="flex flex-col items-start ml-6 mt-8">
+        <div className="flex flex-col items-start sm:items-center md:mx-auto ml-6 mt-8"> 
 
           {/* ------------------------------ lists ---------------------------------- */}
+          <div className="flex flex-col md:flex-row md:flex-wrap md:justify-around">
           {lists.map((list)=> (
             <Link to={`/list/${list.id}/${list.fields.name}`} key={list.id}>
               <div className="bg-tasqGrey hover:bg-tasqHover shadow h-19 w-80 mb-4 rounded px-4 py-4 flex justify-between" key={list.id}>
@@ -48,9 +47,9 @@ export default function Home() {
               </div>
             </Link>
           ))}
-          
-          <Link to="/new">
-            <div className="text-darkPurple purple-hover text-left font-regular w-80 h-10 rounded">
+          </div>
+          <Link to="/new" className="md:self-start">
+            <div className="text-darkPurple purple-hover text-left font-regular w-80 h-10 rounded md:pl-8">
               <p className="inline-block pl-4 text-lg">+</p>
               <p className="inline-block pl-4">Add New List</p>
             </div>

@@ -5,9 +5,9 @@ import CreateButton from './CreateButton';
 import CreatePlus from './CreatePlus';
 import BrandLogo from './BrandLogo';
 
-export default function Navbar() {
+export default function NavbarHome() {
   return (
-    <div className="flex justify-between px-6 mt-11 h-11">
+    <nav className="flex justify-between px-6 mt-11 h-11">
       <div className="object-left py-4" alt="link to home page">
         <NavLink to="/">
           <BrandLogo />
@@ -26,6 +26,6 @@ export default function Navbar() {
           </Media>      
         </NavLink>
       </div>
-    </div>
+    </nav>
   )
 }

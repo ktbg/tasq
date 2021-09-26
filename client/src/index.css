@@ -13,6 +13,13 @@ svg:hover {
   filter: brightness(70%)
 }
 
+@media screen and (min-width: 1024px){
+  nav {
+    width: 75%;
+    margin: 0 auto;
+  }
+}
+
 @tailwind utilities;
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&display=swap');
 

@@ -3,6 +3,7 @@ import Home from './components/Home/Home';
 import ListDetail from './components/ListDetail';
 import Create from './components/Create';
 import Edit from './components/Forms/Edit';
+import NavbarHome from './components/Nav/NavbarHome';
 import './App.css';
 
 
@@ -10,7 +11,8 @@ function App() {
   return (
     <div className="App">
      <Route exact path="/">
-       <Home />
+      <NavbarHome />
+      <Home />
      </Route>
      <Route exact path="/list/:id/:title">
        <ListDetail />
