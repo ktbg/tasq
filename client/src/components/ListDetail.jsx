@@ -70,7 +70,7 @@ if(loading) {
               <div 
                 key={index} 
                 className="bg-tasqGrey hover:bg-tasqHover h-auto w-80 mb-2 rounded px-4 py-4 flex shadow"
-                onClick={(e)=> handleCheckedItem(e, item.id)}
+                onTouchStart={(e)=> handleCheckedItem(e,item.id)}
               >
                 <div className="my-auto">
                   <input 
@@ -78,7 +78,7 @@ if(loading) {
                     id={item.id}
                     className="detail-input"
                     defaultChecked={item.fields.checked}
-                    
+                    onClick={(e)=> handleCheckedItem(e, item.id)}
                   />
                 </div>
                 <li htmlFor={item.id} className={itemClass} key={item?.id}>{item?.fields.item}</li>

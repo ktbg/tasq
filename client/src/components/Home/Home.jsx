@@ -26,11 +26,11 @@ export default function Home() {
 
   return (
     <div>
-      <div className="flex flex-col md:w-3/5 mt-8 mx-auto ">
-        <div className="mt-8 md:pl-8">
+      <div className="flex flex-col w-10/12 sm:w-1/2 md:w-3/5 mt-8 mx-auto ">
+        <div className="mt-8 ml-4 md:pl-8 w-375 mx-auto">
           <h1 className="w-full text-left pl-6 font-medium text-2xl">My Lists</h1>
         </div>
-        <div className="flex flex-col items-start sm:items-center md:mx-auto ml-6 mt-8"> 
+        <div className="flex flex-col items-start sm:items-center mx-auto ml-6 mt-8"> 
 
           {/* ------------------------------ lists ---------------------------------- */}
           <div className="flex flex-col md:flex-row md:flex-wrap md:justify-around">
