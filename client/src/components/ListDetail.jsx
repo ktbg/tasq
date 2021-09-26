@@ -9,7 +9,6 @@ export default function ListDetail() {
   const { id, title } = useParams();
   const [loading, setLoading] = useState(true);
   const [checkedState, setCheckedState] = useState(0);
-  const [totalCompleted, setTotalCompleted] = useState(0);
 
   const itemClass = "text-xl text-left pl-4"; 
 
@@ -31,21 +30,18 @@ export default function ListDetail() {
 // airtable sends strings so booleans read as truthy, require numbers to trigger truthy or falsy
 
 const handleCheckedItem = async (e, id) =>{
+  console.log(e)
   let airtableState = null;
-  let complete = totalCompleted;
   if(e.target.defaultChecked === false){
     airtableState = 1;
-    complete += 1;
   } else {
     airtableState = 0;
-    complete -= 1;
   } 
   const fields = {
       checked: airtableState
     }
   await editItem(id, fields);
   setCheckedState(airtableState);
-  setTotalCompleted(complete);
 }
 
 if(loading) {
@@ -65,12 +61,12 @@ if(loading) {
           <p className="text-sm text-left text-gray-600 pt-1 pl-6 font-light">{items.length} items</p>
         </div>
         <ul className="ml-6 mt-8">
-          {items.map ((item, index) => {
+          {items.map ((item) => {
             return (
               <div 
-                key={index} 
+                key={item.id} 
+                id={item.id}
                 className="bg-tasqGrey hover:bg-tasqHover h-auto w-80 mb-2 rounded px-4 py-4 flex shadow"
-                onTouchStart={(e)=> handleCheckedItem(e,item.id)}
               >
                 <div className="my-auto">
                   <input 
