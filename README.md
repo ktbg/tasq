@@ -4,7 +4,7 @@
 
 Tasq is a react based front end application allowing users to create and manage to do lists.
 
-[TASQ](https://quizzical-mcnulty-618432.netlify.app/)
+[TASQ](https://tasq.netlify.app/)
 
 ## API and Data Sample
 
@@ -125,8 +125,8 @@ To do list items are stored in an airtable api which returns data as follows:
 | Post MVP - App logic to mark list items as done | H | 3 hrs| 10 hrs |  |
 | Post MVP - Progress chart animation for completed list items | M | 3 hr | 1 hr |  |
 | Post MVP - App logic to edit list items | L | 5 hr| 10 hr |  |
-| Post MVP - CSS styling edit page and desktop view | L | 6 hr | | |
-| Total |  | 50 hrs| 47.67 hrs |  |
+| Post MVP - CSS styling edit page and desktop view | L | 6 hr | 2 hrs| |
+| Total |  | 50 hrs| 49.67 hrs |  |
 
 ## Dependencies
 
