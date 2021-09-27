@@ -135,5 +135,6 @@ To do list items are stored in an airtable api which returns data as follows:
 - [axios](https://www.npmjs.com/package/axios)
 - [tailwindcss](https://tailwindcss.com/docs/guides/create-react-app)
 - [react-media](https://github.com/ReactTraining/react-media)
+- [react-toastify](https://fkhadra.github.io/react-toastify/introduction)
 
 
