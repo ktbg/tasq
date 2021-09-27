@@ -54,6 +54,7 @@ export default function Form() {
         draggable: true,
         progress: undefined,
       });
+      setName("");
     } else {
       setName(e.target.value);
       console.log(e.target.value);
