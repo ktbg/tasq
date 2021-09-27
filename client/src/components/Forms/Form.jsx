@@ -4,21 +4,23 @@ import DeleteButton from "../Delete/DeleteButton";
 
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { toast } from 'react-toastify';
 
 import '../../index.css';
+import 'react-toastify/dist/ReactToastify.css';
 import SaveButton from "./SaveButton";
 import { deleteItem, getListItems, createList, addListItem } from "../../services";
 
-export default function Form(props) {                     
+export default function Form() {                     
   const [items, setItems] = useState([]);
   const [toggleDelete, setToggleDelete] = useState(false);
   const [name, setName] = useState("");
   const [listItem, setListItem] = useState([]);
   const [titleId, setTitleId] = useState("");
   const [toggle, setToggle] = useState(false);
+  // const [toggleTitle, setToggleTitle] = useState(false);
   const [title, setTitle] = useState("");
   const [isDisabled, setIsDisabled] = useState(false);
-
 
   // =============================================== 
   // get items for a specific listTitle ID 
@@ -38,8 +40,28 @@ export default function Form(props) {
   },[listItem, titleId, toggleDelete]);
 
 
-  const handleTitleSubmit = async (e) => {
+  // =============== handle new title submit ====================
+
+  const checkTitleSubmit = (e) => {
     e.preventDefault();
+    if(name === "" || name === " "){
+      toast.warn("please create a title for your list!", {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    } else {
+      setName(e.target.value);
+      console.log(e.target.value);
+      handleTitleSubmit(e);
+    }
+  }
+
+  const handleTitleSubmit = async () => {
     const fields = { name };
     try {
       setTitleId(await createList(fields));
@@ -48,9 +70,10 @@ export default function Form(props) {
       setToggle(true);
     } catch(error){
       console.log(error);
-    }
+    } 
   }
 
+  // ============== handle new item submit ======================
 
   const handleItemSubmit = async (e) => {
     e.preventDefault();
@@ -69,19 +92,20 @@ export default function Form(props) {
 
 
     const handleItemDelete = async (id) => {
-      console.log(`this is handle delete ${id}`);
       await deleteItem(id);
       setToggleDelete((prevState)=> !prevState);
     }
 
+
   return (
     <div className="w-94 mx-6 mt-8">
       <div className="flex">
-        <form onSubmit={handleTitleSubmit}>
+        <form onSubmit={checkTitleSubmit}>
           <label className="text-gray-400 uppercase text-xs block text-left mb-1 pl-1">List Name</label>
           <input 
             disabled={isDisabled}
             type="text"
+            placeholder="Enter list name"
             value={name}
             onChange={(e) => setName(e.target.value)}
             className="border border-tasqBorder rounded h-8 w-80 content-start font-light p-4"

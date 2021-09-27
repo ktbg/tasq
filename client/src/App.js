@@ -4,6 +4,7 @@ import ListDetail from './components/ListDetail';
 import Create from './components/Create';
 import Edit from './components/Forms/Edit';
 import NavbarHome from './components/Nav/NavbarHome';
+import { ToastContainer } from "react-toastify";
 import './App.css';
 
 
@@ -23,6 +24,7 @@ function App() {
      <Route path="/list/:id/:title/edit">
        <Edit />
      </Route>
+     <ToastContainer />
     </div>
   );
 }

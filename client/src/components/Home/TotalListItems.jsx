@@ -10,9 +10,7 @@ export default function TotalListItems(props) {
   useEffect(()=> {
     const getItems = async () => {
       try{
-        // set axios to variable
         const viewListItems = await getListItems();
-        // filter to get results and setItems
         const filterView = viewListItems.filter((item) => item.fields.listTitles[0] === `${id}`);
         setItems(filterView);
       }catch(error) {
