@@ -96,13 +96,13 @@ To do list items are stored in an airtable api which returns data as follows:
 |  Day | Deliverable | Status
 |---|---| ---|
 |Sept 16| Wireframe creation and approval | Complete
-|Sept 17| Component hierarchy map and approval | Incomplete
-|Sept 17-19| README, file set up, deploy set up, endpoint testing  | Incomplete
-|Sept 20| README approval, MVP functional logic  | Incomplete
-|Sept 21| CSS | Incomplete
-|Sept 22| CSS / postMVP| Incomplete
-|Sept 23| CSS/ postMVP | Incomplete
-|Sept 24| Presentations | Incomplete
+|Sept 17| Component hierarchy map and approval | Complete
+|Sept 17-19| README, file set up, deploy set up, endpoint testing  | Complete
+|Sept 20| README approval, MVP functional logic  | Complete
+|Sept 21| CSS | Complete
+|Sept 22| CSS / postMVP| Complete
+|Sept 23| CSS/ postMVP | Complete
+|Sept 24| Presentations | Complete
 
 ## Priority Matrix
 
